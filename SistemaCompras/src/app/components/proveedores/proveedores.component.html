@@ -13,8 +13,8 @@
         <div class="col lg-6">
             <div class="card">
                  <div class="card-body">
-                     <h6 class="titulo">Agregar Productos</h6>
-                    <form [formGroup]="form" (ngSubmit)="agregarProducto()">
+                     <h6 class="titulo">{{accion| uppercase}} Productos</h6>
+                    <form [formGroup]="form" (ngSubmit)="guardarProducto()">
                         <div class="input-group input-group-lg mb-3">
                          <span class="input-group-text">
                             <i class="fa-brands fa-itch-io"></i>
@@ -64,17 +64,17 @@
                      <h6 class="titulo">Lista de Productos</h6>
                      <table class="table">
                          <tbody>
-                             <tr *ngFor="let productos of listProducto; let i=index">
-                                 <td>{{productos.id_producto}}</td>
-                                 <td>{{productos.nombre_producto}}</td>
-                                 <td>{{productos.caracteristica}}</td>
-                                 <td>{{productos.medida}}</td>
+                             <tr *ngFor="let producto of listProducto">
+                                 <td>{{producto.id_producto}}</td>
+                                 <td>{{producto.nombre_producto}}</td>
+                                 <td>{{producto.caracteristica}}</td>
+                                 <td>{{producto.medida}}</td>
 
                                  <td>
-                                    <i class="far fa-edit text-info"></i>
+                                    <i (click)="editarProducto(producto)" class="far fa-edit text-info"></i>
                                  </td>
                                  <td>
-                                    <i (click)="eliminarProducto(i)" class="far fa-trash-alt text-danger"></i>
+                                    <i (click)="eliminarProducto(producto.id_producto)" class="far fa-trash-alt text-danger"></i>
                                  </td>
                              </tr>
                          </tbody>

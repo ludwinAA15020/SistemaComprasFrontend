@@ -15,4 +15,16 @@ private myApiUrl ='api/producto/'
    return this.http.get(this.myAppurl+ this.myApiUrl);
   }
 
+  deleteProducto(id:number): Observable<any>{
+    return this.http.delete(this.myAppurl+this.myApiUrl+id);
+  }
+
+  saveProducto(producto: any):Observable<any>{
+    return this.http.post(this.myAppurl+this.myApiUrl,producto);
+  }
+
+  editarProducto(id:number, producto:any): Observable<any>{
+    return this.http.put(this.myAppurl+this.myApiUrl+id,producto);
+  }
+
 }
