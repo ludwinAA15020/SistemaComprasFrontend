@@ -1,16 +1,14 @@
 export interface Empresa {
-   nit:string;
-   nombre:string;
-   representante:string;
-   direccion:string;
-   email:string;
-   telefono:string;
-   fax: string;
-   movil: string;
-   web:string;
-   ncr:string;
-   rubro:string;
-   logo:string,
-   ubicacion:string;
-}         
-        
+   nit: string;
+   nombreProveedor: string;
+   representante: string;
+   direccionCompania: string;
+   email: string;
+   telefonoCompania: string;
+   faxCompania: string;
+   movilCompania: string;
+   website: string;
+   nrc: string;
+   rubro: string;
+   tipoOrganizacion:string
+}

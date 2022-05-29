@@ -1,0 +1,27 @@
+<table class="table table-hover mt-3">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre de CEO</th>
+            <th scope="col">Nombre director</th>
+            <th scope="col">Nombre gerente</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let perfil of perfiles;let i=index">
+            <th scope="row"></th>
+            <td>{{perfil.nombreCeo}}</td>
+            <td>{{perfil.nombreDirector}}</td>
+            <td>{{perfil.nombreGerente}}</td>
+            <td>
+                <i (click)="verReferencia(i)" class="far fa-solid fa-eye" style="margin-right: 10px;"></i>
+                <i (click)="sucursales(i)" class="far fa-solid fa-eye" style="margin-right: 10px;"></i>
+                <i class="far fa-edit text-info" style="margin-right: 10px;"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div *ngIf="perfiles.length == 0" class="row mt-5">
+    <h5>No hay perfil para mostrar</h5>
+</div>

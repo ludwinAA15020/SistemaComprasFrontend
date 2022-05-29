@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { FormBuilder,FormGroup,Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmpresaService } from 'src/app/services/empresa.service';
 
 @Component({
   selector: 'app-crear-empresa',
@@ -9,90 +11,106 @@ import { FormBuilder,FormGroup,Validators} from '@angular/forms';
 })
 
 export class CrearEmpresaComponent implements OnInit {
+  selectedTipo: string = '';
+  organizaciones: any[] = [
+    { id: 1, nombre: 'Corporativa' },
+    { id: 2, nombre: 'Sociedad' },
+    { id: 3, nombre: 'Persona natural' }
+  ];
+  @Input() lista: any[] = [
+    {/*
+      nit: '1234-567891-234-5',
+      nombreProveedor: 'Empresa',
+      representante: 'Juan peréz',
+      direccionCompania: 'direccionCompania1',
+      email: 'example@hotmail.com',
+      telefonoCompania: '12345678',
+      faxCompania: '12345678',
+      movilCompania: '12345678',
+      website: 'www.example.com',
+      nrc: '1234-567891-234-5',
+      rubro: 'Papeleria',
+      tipoOrganizacion: 'Persona natural'*/
+    }];
+  form: FormGroup;
 
-  empresas: any[] = [
-    {
-    nit:'1234-567891-234-5',
-    nombre:'Vidri',
-    representante:'Juan peréz',
-    direccion:'direccion1',
-    email:'example@hotmail.com',
-    telefono:'12345678',
-    fax: '12345678',
-    movil: '12345678',
-    web: 'www.example.com',
-    ncr:'1234-567891-234-5',
-    rubro:'Papeleria',
-    logo:'logo1',
-    ubicacion:'ubicacion1'
-  }];
-    form:FormGroup;
 
-    constructor(private fb:FormBuilder,private toastr: ToastrService) { 
-      this.form = this.fb.group({
-        nit: ['',[Validators.required, Validators.maxLength(17)]],
-        nombre:['',[Validators.required, Validators.maxLength(25)]],
-        representante:['',[Validators.required, Validators.maxLength(25)]],
-        direccion:['',[Validators.required, Validators.maxLength(50)]],
-        email:['',[Validators.required, Validators.maxLength(25)]],
-        telefono:['',[Validators.required, Validators.maxLength(9)]],
-        fax:['',[Validators.required, Validators.maxLength(9)]],
-        movil:['',[Validators.required, Validators.maxLength(9)]],
-        web:['',[Validators.required, Validators.maxLength(25)]],
-        ncr:['',[Validators.required, Validators.maxLength(17)]],
-        rubro:['',[Validators.required, Validators.maxLength(25)]],
-        //tipo_empresa_id:['',Validators.required],
-        logo:['',[Validators.required, Validators.maxLength(50)]],
-        ubicacion:['',[Validators.required, Validators.maxLength(50)]]
-      })
+  constructor(
+    private fb: FormBuilder,
+    private toastr: ToastrService,
+    private router: Router,
+    private _empresaService: EmpresaService
+  ) {
+    this.form = this.fb.group({
+      nit: ['', [Validators.required, Validators.maxLength(17)]],
+      nombreProveedor: ['', [Validators.required, Validators.maxLength(25)]],
+      representante: ['', [Validators.required, Validators.maxLength(25)]],
+      direccionCompania: ['', [Validators.required, Validators.maxLength(50)]],
+      email: ['', [Validators.required, Validators.maxLength(25)]],
+      telefonoCompania: ['', [Validators.required, Validators.maxLength(9)]],
+      faxCompania: ['', [Validators.required, Validators.maxLength(9)]],
+      movilCompania: ['', [Validators.required, Validators.maxLength(9)]],
+      website: ['', [Validators.required, Validators.maxLength(25)]],
+      nrc: ['', [Validators.required, Validators.maxLength(17)]],
+      rubro: ['', [Validators.required, Validators.maxLength(25)]],
+      tipoOrganizacion: ['', Validators.required],
+    })
+  }
+
+  ngOnInit(): void {
+    this.obtenerEmpresas();
+  }
+  obtenerEmpresas() {
+    this._empresaService.getListEmpresas().subscribe(data => {
+      console.log(data);
+      this.lista = data;
+      console.log(this.lista);
+    }, error => {
+      console.log(error);
+    })
+
+  }
+  agregarEmpresa() {
+    const empresa: any = {
+      nit: this.form.get('nit')?.value,
+      nombreProveedor: this.form.get('nombreProveedor')?.value,
+      representante: this.form.get('representante')?.value,
+      direccionCompania: this.form.get('direccionCompania')?.value,
+      email: this.form.get('email')?.value,
+      telefonoCompania: this.form.get('telefonoCompania')?.value,
+      faxCompania: this.form.get('faxCompania')?.value,
+      movilCompania: this.form.get('movilCompania')?.value,
+      website: this.form.get('website')?.value,
+      nrc: this.form.get('nrc')?.value,
+      rubro: this.form.get('rubro')?.value,
+      tipoOrganizacion: this.form.get('tipoOrganizacion')?.value
     }
-  
-    ngOnInit(): void {
-    /*  $(document).ready(function(){
-        $('#nuevaEmpresa').on("click", function(){
-          $('#miModal').modal()
-        })
-      })*/
-    }
-    obtenerEmpresas() {/*
-      this._tarjetaService.getListTarjetas().subscribe(data => {
-        console.log(data);
-        this.listTarjetas = data;
-      }, error => {
-        console.log(error);
-      })*/
-    }
-    agregarEmpresa() {
-      const empresa: any = {
-        nit: this.form.get('nit')?.value,
-        nombre: this.form.get('nombre')?.value,
-        representante: this.form.get('representante')?.value,
-        direccion: this.form.get('direccion')?.value,
-        email: this.form.get('email')?.value,
-        telefono: this.form.get('telefono')?.value,
-        fax: this.form.get('fax')?.value,
-        movil: this.form.get('movil')?.value,
-        web: this.form.get('web')?.value,
-        ncr: this.form.get('ncr')?.value,
-        rubro: this.form.get('rubro')?.value,
-        logo: this.form.get('logo')?.value,
-        ubicacion: this.form.get('logo')?.value,
-        //this.toastr.success('La empresa fue registrada con éxito!', 'Empresa Registrada')
-      }
-      this.empresas.push(empresa);
-      this.toastr.success('La empresa fue registrada con exito!', 'Empresa Registrada');
+    this._empresaService.saveEmpresa(empresa).subscribe(data => {
+      this.toastr.success('La empresa fue registrado con exito', 'Empresa registrado');
+      this.obtenerEmpresas();
       this.form.reset();
-    } 
-    eliminarEmpresa(index:number){
-      this.empresas.splice(index,1)
-      this.toastr.error('La empresa fue eliminada con éxito','Empresa eliminada')
-    }
-      displayStyle= "none";
-  
-      agregarPerfil() {
-        this.displayStyle = "block";
-      }
-      closePopup() {
-        this.displayStyle = "none";
-      }
+    }, error => {
+      this.toastr.error('Upsss.... ocurrio un error', 'Error');
+      console.log(error);
+    })
+    this.lista.push(empresa);
+    this.toastr.success('La empresa fue registrada con exito!', 'Empresa Registrada');
+    this.form.reset();
+    this.router.navigate(['/app-crear-empresa']);
+  }
+  eliminarEmpresa(index: number) {
+    this.lista.splice(index, 1)
+    this.toastr.error('La empresa fue eliminada con éxito', 'Empresa eliminada')
+  }
+  onChange(event: any) {
+    this.selectedTipo = event.target.value
+  }
+  displayStyle = "none";
+
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
 }

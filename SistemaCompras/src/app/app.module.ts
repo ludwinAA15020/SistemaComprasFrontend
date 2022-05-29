@@ -15,6 +15,14 @@ import { CrearEmpresaComponent } from './components/crear-empresa/crear-empresa.
 import { ListadoEmpresasComponent } from './components/listado-empresas/listado-empresas.component';
 import { CrearEvaluacionComponent } from './components/crear-evaluacion/crear-evaluacion.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CrearReferenciaComponent } from './components/crear-referencia/crear-referencia.component';
+import { CrearPerfilComponent } from './components/crear-perfil/crear-perfil.component';
+import { VerEmpresaComponent } from './components/ver-empresa/ver-empresa.component';
+import { VerPerfilComponent } from './components/ver-perfil/ver-perfil.component';
+import { ListadoReferenciasComponent } from './components/listado-referencias/listado-referencias.component';
+import { VerReferenciaComponent } from './components/ver-referencia/ver-referencia.component';
+import { AgregarSucursalComponent } from './components/agregar-sucursal/agregar-sucursal.component';
+import { AgregarCompaniaComponent } from './components/agregar-compania/agregar-compania.component';
 
 const routes: Routes = [
   { path: 'app-listado-empresas', component: ListadoEmpresasComponent },
@@ -30,7 +38,15 @@ const routes: Routes = [
     CrearEmpresaComponent,
     ListadoEmpresasComponent,
     CrearEvaluacionComponent,
-    NavbarComponent
+    NavbarComponent,
+    CrearReferenciaComponent,
+    CrearPerfilComponent,
+    VerEmpresaComponent,
+    VerPerfilComponent,
+    ListadoReferenciasComponent,
+    VerReferenciaComponent,
+    AgregarSucursalComponent,
+    AgregarCompaniaComponent,
 
   ],
   imports: [

@@ -1,0 +1,134 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5>Empresa la nueva</h5>
+                    <form>
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group" role="group" aria-label="Third group">
+                                    <button  style="margin-right: 10px;" class="btn btn-success" routerLink="/app-crear-perfil">Perfil</button>
+                                </div>
+                            </div>
+                            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group" role="group" aria-label="Third group">
+                                    <button  style="margin-right: 10px;" class="btn btn-primary" routerLink="/app-crear-referencia">Referencia</button>
+                                </div>
+                            </div>    
+
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col">
+                                <legend class="col-form-label col-lg-6 pt-0"><strong>NIT</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-id-card">
+                                            </i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="NIT" readonly>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <legend class="col-form-label col-lg-8 pt-0"><strong>Representante</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-regular fa-user">
+                                            </i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="representante" type="text" class="form-control"
+                                        placeholder="Representante" readonly>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <legend class="col-form-label col-lg-6 pt-0"><strong>Dirección</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="direccionCompania" type="text" class="form-control"
+                                        placeholder="Dirección" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col">
+                                <legend class="col-form-label col-lg-6 pt-0"><strong>Teléfono</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-phone">
+                                            </i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="telefonoCompania" type="text" class="form-control"
+                                        placeholder="Teléfono" readonly>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <legend class="col-form-label col-lg-4 pt-0"><strong>Fax</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-fax">
+                                            </i></span>
+                                    </div>
+                                    <input formControlName="faxCompania" type="text" class="form-control"
+                                        placeholder="Fax" readonly>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <legend class="col-form-label col-lg-8 pt-0"><strong>Teléfono móvil</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-mobile-retro">
+
+                                            </i></span>
+                                    </div>
+                                    <input formControlName="movilCompania" type="text" class="form-control"
+                                        placeholder="Teléfono móvil" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col">
+                                <legend class="col-form-label col-lg-8 pt-0"><strong>Sitio web</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-brands fa-chrome"></i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="website" type="text" class="form-control"
+                                        placeholder="Sitio web" readonly>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <legend class="col-form-label col-lg-4 pt-0"><strong>Rubro</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-regular fa-user">
+                                            </i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="rubro" type="text" class="form-control" placeholder="Rubro"
+                                        readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

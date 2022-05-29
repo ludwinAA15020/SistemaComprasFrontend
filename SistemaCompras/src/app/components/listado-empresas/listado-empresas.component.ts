@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input} from '@angular/core';
 import { Empresa } from './../../interfaces/empresa';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listado-empresas',
@@ -7,27 +9,26 @@ import { Empresa } from './../../interfaces/empresa';
   styleUrls: ['./listado-empresas.component.css']
 })
 export class ListadoEmpresasComponent implements OnInit {
-  empresas: Empresa[] = [
-    {
-      nit:'1234-567891-234-5',
-      nombre:'Vidri',
-      representante:'Juan peréz',
-      direccion:'direccion1',
-      email:'example@hotmail.com',
-      telefono:'12345678',
-      fax: '12345678',
-      movil: '12345678',
-      web: 'www.example.com',
-      ncr:'1234-567891-234-5',
-      rubro:'Papeleria',
-      logo:'logo1',
-      ubicacion:'ubicacion1'
-    }
-  ];
-  constructor() {
+@Input() empresas: any[]=[]
+  constructor(
+    private toastr: ToastrService,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
+  }
+  verEmpresa(index: number) {
+    this.router.navigate(['/app-ver-perfil', index]);
+
+  }
+
+  eliminarEmpresa(index: number) {
+    this.empresas.splice(index, 1)
+    this.toastr.error('La empresa fue eliminada con éxito', 'Empresa eliminada')
+  }
+  setEmpresa(empresa:any){
+    console.log(empresa)
   }
 
 }

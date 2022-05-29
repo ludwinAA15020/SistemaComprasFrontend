@@ -1,0 +1,122 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg offset-lg">
+      <div class="card">
+        <div class="card-body text-center">
+          <button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary float-end"
+            (click)="openPopup()">Agregar perfil
+          </button>
+          <app-ver-perfil [perfiles]="lista"></app-ver-perfil>
+          <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Datos de la empresa proveedora</h4>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="form" (ngSubmit)="agregarPerfil()">
+                    <div class="row g-3">
+                      <div class="col">
+                        <legend class="col-form-label col-lg-6 pt-0">
+                          <strong>Nombre CEO</strong>
+                        </legend>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreCeo')?.valid"
+                                [class.red-icon]="this.form.get('nombreCeo')?.invalid && this.form.get('nombreCeo')?.touched">
+                              </i>
+                            </span>
+                          </div>
+                          <input formControlName="nombreCeo" type="text" class="form-control" placeholder="Nombre CEO">
+                        </div>
+                      </div>
+
+                      <div class="col">
+                        <legend class="col-form-label col-lg-6 pt-0">
+                          <strong>Nombre director</strong>
+                        </legend>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreDirector')?.valid"
+                                [class.red-icon]="this.form.get('nombreDirector')?.invalid && this.form.get('nombreDirector')?.touched">
+                              </i>
+                            </span>
+                          </div>
+                          <input formControlName="nombreDirector" type="text" class="form-control"
+                            placeholder="Nombre director">
+                        </div>
+                      </div>
+
+                      <div class="col">
+                        <legend class="col-form-label col-lg-6 pt-0">
+                          <strong>Nombre gerente</strong>
+                        </legend>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreGerente')?.valid"
+                                [class.red-icon]="this.form.get('nombreGerente')?.invalid && this.form.get('nombreGerente')?.touched">
+                              </i>
+                            </span>
+                          </div>
+                          <input formControlName="nombreGerente" type="text" class="form-control"
+                            placeholder="Nombre gerente">
+                        </div>
+                      </div>
+
+                      <div class="row g-3">
+                        <div class="col">
+                          <legend class="col-form-label col-lg-6 pt-0">
+                            <strong>Escrituras</strong>
+                          </legend>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="fa-regular fa-user" [class.green-icon]="this.form.get('escritura')?.valid"
+                                  [class.red-icon]="this.form.get('escritura')?.invalid && this.form.get('escritura')?.touched">
+                                </i>
+                              </span>
+                            </div>
+                            <input formControlName="escritura" type="text" class="form-control"
+                              placeholder="Escrituras">
+                          </div>
+                        </div>
+
+                        <div class="col">
+                          <legend class="col-form-label col-lg-6 pt-0">
+                            <strong>Razón social</strong>
+                          </legend>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="fa-regular fa-user" [class.green-icon]="this.form.get('razonSocial')?.valid"
+                                  [class.red-icon]="this.form.get('razonSocial')?.invalid && this.form.get('razonSocial')?.touched">
+                                </i>
+                              </span>
+                            </div>
+                            <input formControlName="razonSocial" type="text" class="form-control"
+                              placeholder="Razón social">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-grid gap-2 d-md-block">
+                      <button [disabled]="this.form.invalid" type="submit" class="btn btn-success">Guardar</button>
+                    </div><br>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" (click)="closePopup()">
+                    Cerrar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
