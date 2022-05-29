@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
-private myAppurl ='https://localhost:7071/';
-private myApiUrl ='api/producto/'
+//private myAppurl ='https://localhost:44327/';
+private myAppurl = environment.urlService
+private myApiUrl ='/api/producto/'
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +27,13 @@ private myApiUrl ='api/producto/'
 
   editarProducto(id:number, producto:any): Observable<any>{
     return this.http.put(this.myAppurl+this.myApiUrl+id,producto);
+  }
+  productoGetById(id:number){
+    return this.http.get(this.myAppurl+this.myApiUrl+id);
+  }
+
+  getcategorias(){
+    return this.http.get<any[]>(`${this.myAppurl}/api/Categorias`);
   }
 
 }

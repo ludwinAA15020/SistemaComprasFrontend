@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProveedoresComponent } from './components/proveedores/proveedores.component';
+import { ProductosComponent } from './components/productos/productos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{ HttpClient, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
@@ -15,6 +15,7 @@ import { CrearEmpresaComponent } from './components/crear-empresa/crear-empresa.
 import { ListadoEmpresasComponent } from './components/listado-empresas/listado-empresas.component';
 import { CrearEvaluacionComponent } from './components/crear-evaluacion/crear-evaluacion.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+<<<<<<< HEAD
 import { CrearReferenciaComponent } from './components/crear-referencia/crear-referencia.component';
 import { CrearPerfilComponent } from './components/crear-perfil/crear-perfil.component';
 import { VerEmpresaComponent } from './components/ver-empresa/ver-empresa.component';
@@ -23,6 +24,12 @@ import { ListadoReferenciasComponent } from './components/listado-referencias/li
 import { VerReferenciaComponent } from './components/ver-referencia/ver-referencia.component';
 import { AgregarSucursalComponent } from './components/agregar-sucursal/agregar-sucursal.component';
 import { AgregarCompaniaComponent } from './components/agregar-compania/agregar-compania.component';
+=======
+import { ListaProductoComponent } from './components/lista-producto/lista-producto.component';
+import { DataTablesModule } from "angular-datatables";
+import {MatTableModule} from '@angular/material/table';
+import { FiltroPipe } from './components/pipes/filtro.pipe';
+>>>>>>> f78d41f3b171601a73c618ab43ec66a430b18cca
 
 const routes: Routes = [
   { path: 'app-listado-empresas', component: ListadoEmpresasComponent },
@@ -34,11 +41,12 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ProveedoresComponent,
+    ProductosComponent,
     CrearEmpresaComponent,
     ListadoEmpresasComponent,
     CrearEvaluacionComponent,
     NavbarComponent,
+<<<<<<< HEAD
     CrearReferenciaComponent,
     CrearPerfilComponent,
     VerEmpresaComponent,
@@ -47,6 +55,11 @@ const routes: Routes = [
     VerReferenciaComponent,
     AgregarSucursalComponent,
     AgregarCompaniaComponent,
+=======
+    ListaProductoComponent,
+    FiltroPipe
+    
+>>>>>>> f78d41f3b171601a73c618ab43ec66a430b18cca
 
   ],
   imports: [
@@ -56,7 +69,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
