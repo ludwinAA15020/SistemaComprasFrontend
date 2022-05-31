@@ -2,8 +2,8 @@ import { Component, OnInit,Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Referencia } from '../../interfaces/referencia';
 import { tipoReferencia } from '../../interfaces/tipoReferencia';
+import { ReferenciaService } from 'src/app/services/referencia.service';
 
 @Component({
   selector: 'app-crear-referencia',
@@ -17,16 +17,15 @@ export class CrearReferenciaComponent implements OnInit {
     { nombre: 'Comercial' }
   ];
 
-  @Input() lista: any[] = [
-    {
-      nombreCompania: 'Vidri',
-      nombreContacto: 'Juan',
-      telefonoContacto: '12345678',
-      tipoReferencia: 'Comercial'
-    }];
+  @Input() lista: any[] = [];
 
   form: FormGroup;
-  constructor(private fb: FormBuilder, private toastr: ToastrService,private router:Router) {
+  constructor(
+    private fb: FormBuilder, 
+    private toastr: ToastrService,
+    private router:Router,
+    private _referenciaService:ReferenciaService
+    ) {
     this.form = this.fb.group({
       nombreCompania: ['', [Validators.required, Validators.maxLength(25)]],
       nombreContacto: ['', [Validators.required, Validators.maxLength(50)]],
@@ -36,6 +35,7 @@ export class CrearReferenciaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //this.obtenerReferencias()
   }
   agregarReferencia() {
     const referencia: any = {
@@ -45,10 +45,14 @@ export class CrearReferenciaComponent implements OnInit {
       tipoReferencia: this.form.get('tipoReferencia')?.value
 
     }
-    this.lista.push(referencia);
-    this.toastr.success('La referencia fue registrada con exito!', 'Referencia Registrada');
-    this.form.reset();
-    this.router.navigate(['/app-crear-referencia']);
+    this._referenciaService.saveReferencia(referencia).subscribe(data => {
+      this.toastr.success('La referencia fue registrado con exito', 'Referencia registrado');
+      this.form.reset();
+      this.router.navigate(['/app-crear-referencia']);
+    }, error => {
+      this.toastr.error('Upsss.... ocurrio un error', 'Error');
+      console.log(error);
+    })
   }
   onChange(event: any) {
     this.selectedtipoRef = event.target.value

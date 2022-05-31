@@ -1,7 +1,6 @@
 <table class="table table-hover mt-3">
     <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Empresa</th>
             <th scope="col">Nombre contacto</th>
             <th scope="col">Teléfono</th>
@@ -10,14 +9,13 @@
     </thead>
     <tbody>
         <tr *ngFor="let referencia of referencias;let i=index">
-            <th scope="row">1</th>
-            <td>{{referencia.nombreCompania}}</td>
-            <td>{{referencia.nombreContacto}}</td>
-            <td>{{referencia.telefonoContacto}}</td>
+            <td>{{referencia.nombrecompania}}</td>
+            <td>{{referencia.nombrecontacto}}</td>
+            <td>{{referencia.telefonocontacto}}</td>
             <td>
                 <i (click)="verReferencia(i)" class="far fa-solid fa-eye" style="margin-right: 10px;"></i>
                 <i class="far fa-edit text-info" style="margin-right: 10px;"></i>
-                <i (click)="eliminarReferencia(i)" style="margin-right: 10px;"
+                <i (click)="eliminarReferencia(referencia.idreferencia)" style="margin-right: 10px;"
                     class="fa-solid fa-trash-can text-danger"></i>
             </td>
         </tr>

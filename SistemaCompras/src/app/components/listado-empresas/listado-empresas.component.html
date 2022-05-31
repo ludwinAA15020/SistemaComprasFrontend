@@ -1,7 +1,6 @@
 <table class="table table-hover mt-3">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Nombre</th>
       <th scope="col">Representante</th>
       <th scope="col">Rubro</th>
@@ -10,14 +9,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let empresa of empresas;let i=index">
-      <th scope="row">1</th>
-      <td>{{empresa.nombreProveedor}}</td>
+      <td>{{empresa.nombreproveedor}}</td>
       <td>{{empresa.representante}}</td>
       <td>{{empresa.rubro}}</td>
       <td>
         <i (click)="verEmpresa(i)" class="far fa-solid fa-eye" style="margin-right: 10px;"></i>
         <i class="far fa-edit text-info" style="margin-right: 10px;"></i>
-        <i (click)="eliminarEmpresa(i)" style="margin-right: 10px;" class="fa-solid fa-trash-can text-danger"></i>
+        <!-- <i (click)="eliminarEmpresa(i)" style="margin-right: 10px;" class="fa-solid fa-trash-can text-danger"></i> -->
       </td>
     </tr>
   </tbody>

@@ -39,12 +39,12 @@
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
                             <span class="input-group-text">
-                              <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreProveedor')?.valid"
-                                [class.red-icon]="this.form.get('nombreProveedor')?.invalid && this.form.get('nombreProveedor')?.touched">
+                              <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreproveedor')?.valid"
+                                [class.red-icon]="this.form.get('nombreproveedor')?.invalid && this.form.get('nombreproveedor')?.touched">
                               </i>
                             </span>
                           </div>
-                          <input formControlName="nombreProveedor" type="text" class="form-control"
+                          <input formControlName="nombreproveedor" type="text" class="form-control"
                             placeholder="Nombre de la compañia proveedora">
                         </div>
                       </div>
@@ -179,7 +179,7 @@
                         <select formControlName="tipoOrganizacion" class="form-select form-select-sm"
                           aria-label=".form-select-sm example" (change)="onChange($event)">
                           <option selected="selected">Seleccione el tipo de empresa</option>
-                          <option *ngFor="let empresa of organizaciones" value="{{empresa.nombre}}">{{empresa.nombre}}
+                          <option *ngFor="let empresa of organizaciones" value="{{empresa.id}}">{{empresa.nombre}}
                           </option>
                         </select>
                       </div>

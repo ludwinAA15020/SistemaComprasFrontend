@@ -10,10 +10,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let perfil of perfiles;let i=index">
-            <th scope="row"></th>
-            <td>{{perfil.nombreCeo}}</td>
-            <td>{{perfil.nombreDirector}}</td>
-            <td>{{perfil.nombreGerente}}</td>
+            <td>{{perfil.idperfil}}</td>
+            <td>{{perfil.nombreceo}}</td>
+            <td>{{perfil.directorareaLista}}</td>
+            <td>{{perfil.nombregerente}}</td>
             <td>
                 <i (click)="verReferencia(i)" class="far fa-solid fa-eye" style="margin-right: 10px;"></i>
                 <i (click)="sucursales(i)" class="far fa-solid fa-eye" style="margin-right: 10px;"></i>

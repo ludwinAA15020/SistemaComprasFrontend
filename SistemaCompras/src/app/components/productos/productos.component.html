@@ -31,7 +31,7 @@
                                         placeholder="Precio">
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                         <div class="input-group input-group-lg mb-3">
                             <span class="input-group-text">
                                 <i class="fa-regular fa-credit-card"></i>
@@ -57,13 +57,14 @@
                             <span class="input-group-text">
                                 <i class="fa-regular fa-credit-card"></i>
                             </span>
-                            <input formControlName="imagenprod" type="file" (change)="Capturarfile($event)" class="form-control" placeholder="Imagen">
+                            <input formControlName="imagenprod" type="file" (change)="Capturarfile($event)"
+                                class="form-control" placeholder="Imagen">
                         </div>
                         <div class="input-group input-group-lg mb-3" *ngIf="previsualizacion">
                             <span class="input-group-text">
                                 <i class="fa-regular fa-credit-card"></i>
                             </span>
-                            <img width="100px"  [src]="previsualizacion" alt="">
+                            <img width="100px" [src]="previsualizacion" alt="">
                         </div>
                         <div class="row">
                             <div class="col lg-7">
@@ -80,21 +81,22 @@
                                     <span class="input-group-text">
                                         <i class="fas fa-key"></i>
                                     </span>
-                                  
-                                        <select formControlName="idcategoria">
-                                            <option value="0">(Seleccione la categoria del producto)</option>
-                                            <option [value]="cat.idcategoria" *ngFor="let cat of Categorias">{{cat.nombrecategoria}}</option>
-                                          </select>
+
+                                    <select formControlName="idcategoria">
+                                        <option value="0">(Seleccione la categoria del producto)</option>
+                                        <option [value]="cat.idcategoria" *ngFor="let cat of Categorias">
+                                            {{cat.nombrecategoria}}</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button  class="btn-success btn-lg" (click)="cancelar()" class="btn btn-danger">
-                            <i class="fa fa-database"></i>&nbsp; Cancelar</button>
+                            <button class="btn-success btn-lg" (click)="cancelar()" class="btn btn-danger">
+                                <i class="fa fa-database"></i>&nbsp; Cancelar</button>
 
-                            <button type="submit" class="btn-success btn-lg">                                
+                            <button type="submit" class="btn-success btn-lg">
                                 <i class="fa fa-database"></i>&nbsp; Aceptar</button>
-                        </div>                  
+                        </div>
 
                     </form>
                 </div>

@@ -3,6 +3,7 @@
     <div class="col-lg offset-lg">
       <div class="card">
         <div class="card-body text-center">
+          <h1>Listado de referencias bancarias y comerciales</h1>
           <button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary float-end"
             (click)="openPopup()">Agregar Referencia
           </button>
@@ -11,7 +12,7 @@
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title">Referencia bancarias y comerciales de la empresa proveedora</h4>
+                  <h1 class="modal-title">Referencia bancarias y comerciales de la empresa proveedora</h1>
                 </div>
                 <div class="modal-body">
                   <form [formGroup]="form" (ngSubmit)="agregarReferencia()">
@@ -83,12 +84,6 @@
                       </div>
                     </div>
                   </form>
-
-
-
-
-
-
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" (click)="closePopup()">

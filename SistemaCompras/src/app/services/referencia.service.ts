@@ -6,12 +6,19 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class ReferenciaService {
-    private myAppurl = 'https://localhost:7071/';
-    private myApiUrl = 'api/referencia/'
+    private myAppurl = 'https://localhost:44327/';
+    private myApiUrl = 'api/Referencias/'
 
     constructor(private http: HttpClient) { }
 
     saveReferencia(referencia: any): Observable<any> {
         return this.http.post(this.myAppurl + this.myApiUrl, referencia);
     }
+    getListReferencias(): Observable<any> {
+        return this.http.get(this.myAppurl + this.myApiUrl);
+    }
+    deleteReferencia(id: number): Observable<any> {
+        return this.http.delete(this.myAppurl + this.myApiUrl + id);
+    }
+
 }

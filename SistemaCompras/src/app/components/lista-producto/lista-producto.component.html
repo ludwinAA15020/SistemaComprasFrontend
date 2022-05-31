@@ -9,23 +9,23 @@
         </div>
     </div>
     <div>
-    
+
     </div>
     <div class="row mt-4"></div>
     <div class="col lg-6">
         <div class="card">
-            <div class="card-body">              
+            <div class="card-body">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button (click)="nuevo()" class="btn btn-primary">Agregar Nuevo</button>
 
-        </div>
-        
-        <input type="text" class="form-control mb-2" placeholder="Buscar Producto" #txtSearch
-                        (keyup)="onSearchPokemon( txtSearch.value )" />            
-           
-   
-                <table class="table" class="table table-striped table-hover "> 
-              
+                </div>
+
+                <input type="text" class="form-control mb-2" placeholder="Buscar Producto" #txtSearch
+                    (keyup)="onSearchPokemon( txtSearch.value )" />
+
+
+                <table class="table" class="table table-striped table-hover ">
+
                     <thead>
                         <th>Nombre</th>
                         <th>Marca</th>
@@ -35,33 +35,34 @@
                     <tbody>
                         <tr *ngFor="let producto of listProducto | filtroProducto:page:search">
                             <td>{{producto.nombreprod}}</td>
-                            <td>{{producto.marcaprod}}</td>
-                            <td>{{producto.precioprod | currency}}</td>
+                            <td>{{producto.marcaprod }}</td>
+                            <td>{{producto.precioprod }}</td>
                             <td>{{producto.categoriaNombre}}</td>
 
                             <td>
                                 <i (click)="editarProducto(producto)" class="far fa-edit text-info"></i>
                             </td>
-                             <td>
-                                    <i (click)="eliminarProducto(producto.idproducto)"
-                                        class="far fa-trash-alt text-danger"></i>
-                                </td>
+                            <td>
+                                <i (click)="eliminarProducto(producto.idproducto)"
+                                    class="far fa-trash-alt text-danger"></i>
+                            </td>
                         </tr>
                     </tbody>
-                </table>     
-              
+                </table>
+
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-link"(click)="prevPage()">
+                    <button class="btn btn-link" (click)="prevPage()">
                         Anteriores
                     </button>
                     &nbsp;
-                    <button class="btn btn-link"
-                            (click)="nextPage()"  [disabled]="(listProducto | filtroProducto:page:search).length===0">
+                    <!-- <button class="btn btn-link" (click)="nextPage()"
+                        [disabled]="(listProducto|filtroProducto:page:search).length===0">
                         Siguientes
-                    </button>
-                  </div>
+                    </button> -->
+                </div>
             </div>
         </div>
     </div>
 </div>
-
+<!-- 
+Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True; -->

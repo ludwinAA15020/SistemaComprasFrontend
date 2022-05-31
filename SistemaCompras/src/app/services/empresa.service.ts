@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EmpresaService {
-  private myAppurl = 'https://localhost:7071/';
-  private myApiUrl = 'api/empresa/'
+  private myAppurl = 'https://localhost:44327/';
+  private myApiUrl = 'api/Proveedor/'
 
   constructor(private http: HttpClient) { }
 
@@ -17,5 +17,14 @@ export class EmpresaService {
 
   saveEmpresa(empresa: any): Observable<any> {
     return this.http.post(this.myAppurl + this.myApiUrl, empresa);
+  }
+  empresaGetById(id:number){
+    return this.http.get(this.myAppurl+this.myApiUrl+id);
+  }
+  getOrganizaciones(){
+    return this.http.get<any[]>(`${this.myAppurl}/api/Organizaciones`);
+  }
+  editarEmpresa(id:number, producto:any): Observable<any>{
+    return this.http.put(this.myAppurl+this.myApiUrl+id,producto);
   }
 }
