@@ -23,8 +23,10 @@ import { ListadoReferenciasComponent } from './components/listado-referencias/li
 import { VerReferenciaComponent } from './components/ver-referencia/ver-referencia.component';
 import { AgregarSucursalComponent } from './components/agregar-sucursal/agregar-sucursal.component';
 import { AgregarCompaniaComponent } from './components/agregar-compania/agregar-compania.component';
+import { ListaProductoComponent } from './components/lista-producto/lista-producto.component';
 import { DataTablesModule } from 'angular-datatables';
 import { FiltroPipe } from './components/pipes/filtro.pipe';
+
 
 const routes: Routes = [
   { path: 'app-listado-empresas', component: ListadoEmpresasComponent },
@@ -49,6 +51,7 @@ const routes: Routes = [
     VerReferenciaComponent,
     AgregarSucursalComponent,
     AgregarCompaniaComponent,
+    ListaProductoComponent,
     FiltroPipe
   ],
   imports: [

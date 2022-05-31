@@ -50,17 +50,17 @@ export class ProductosComponent implements OnInit {
       if (this.parametro == "new") {
         this.mensaje = "Ingrese un nuevo producto";
       } else {
-        this.mensaje = "Modifique el producto";
+        this.mensaje = "Modifique el producto macho";
         this._productoService.productoGetById(Number(this.parametro)).subscribe(data => {
-          console.log("Data para mostrar en el formulario", data);
+          console.log("Data para mostrar en el formulario",data);
           this.form.setValue(data);
         }, error => {
           console.log(error);
         })
         //Aqui tenes que llamar el getById
-        //  this.productoService.getProductosById(Number(this.parametro)).subscribe(res=>{
-        //   this.Form.setValue(res);
-        // })
+      //  this.productoService.getProductosById(Number(this.parametro)).subscribe(res=>{
+       //   this.Form.setValue(res);
+       // })
       }
     });
   }
@@ -102,9 +102,9 @@ guardarProducto(){
   //si el parametro recibio es new, procedemos aguardarlo
   if (this.parametro == "new") {
     //Agregamos un nuevo productof
-  this.form.controls["imagenprod"]=this.archivos;
+  //this.form.controls["imagenprod"]=this.archivos;
     this.form.controls["idproducto"].setValue(0);
-   // console.log(JSON.stringify(this.form.value));
+    console.log(JSON.stringify(this.form.value));
     this._productoService.saveProducto(this.form.value).subscribe(data => {
       this.toastr.success('El Producto fue registrado con exito', 'Producto registrado');
       this.router.navigate(["app-lista-producto"]);

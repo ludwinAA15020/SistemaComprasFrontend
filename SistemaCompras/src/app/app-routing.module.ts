@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: '', component:CrearEmpresaComponent},
   { path: 'app-crear-evaluacion', component: CrearEvaluacionComponent },
   { path: 'app-crear-empresa', component:CrearEmpresaComponent},
-  { path: 'app-crear-producto/new', component:ProductosComponent},
   { path: 'app-crear-referencia', component:CrearReferenciaComponent},
   { path: 'app-crear-perfil', component:CrearPerfilComponent},
   { path: 'app-ver-perfil/:id', component: CrearPerfilComponent },
@@ -21,6 +20,8 @@ const routes: Routes = [
   { path: 'app-agregar-sucursal', component: AgregarSucursalComponent },
   { path: 'app-agregar-sucursal/:id', component: AgregarSucursalComponent },
   { path: 'app-lista-producto', component:ListaProductoComponent },
+  { path: 'app-crear-producto/:id', component:ProductosComponent},
+
   { path: '**',redirectTo:'app-listado-empresas',pathMatch:'full' },
 ];
 
