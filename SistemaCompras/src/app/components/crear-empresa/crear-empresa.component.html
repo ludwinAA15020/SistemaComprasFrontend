@@ -3,203 +3,191 @@
     <div class="col-lg offset-lg-2">
       <div class="card">
         <div class="card-body text-center">
-          <button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary float-end"
-          (click)="openPopup()">Nueva
-          empresa
-        </button>
-          <app-listado-empresas [empresas]="lista"></app-listado-empresas>
-          <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+          <form [formGroup]="form" (ngSubmit)="agregarEmpresa()" #empresaData="ngForm">
+            <h1>{{msj}} Empresa</h1>
+            <h2>Datos de la empresa proveedora</h2>
+            <div class="row g-3">
+              <div class="col">
+                <legend class="col-form-label col-lg-6 pt-0"><strong>NIT</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-id-card">
+                      </i>
+                    </span>
+                  </div>
+                  <input formControlName="nit" type="text" class="form-control" placeholder="NIT">
+                </div>
+
+              </div>
+              <div class="col">
+                <legend class="col-form-label col-lg-6 pt-0">
+                  <strong>Nombre</strong>
+                </legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-regular fa-user">
+                      </i>
+                    </span>
+                  </div>
+                  <input formControlName="nombreproveedor" type="text" class="form-control"
+                    placeholder="Nombre de la compañia proveedora">
+                </div>
+              </div>
+
+              <div class="col">
+                <legend class="col-form-label col-lg-8 pt-0"><strong>Representante</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-regular fa-user">
+                      </i>
+                    </span>
+                  </div>
+                  <input formControlName="representante" type="text" class="form-control"
+                    placeholder="Representante">
+                </div>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col">
+                <legend class="col-form-label col-lg-6 pt-0"><strong>Dirección</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-location-dot"></i>
+                    </span>
+                  </div>
+                  <input formControlName="direccionCompania" type="text" class="form-control"
+                    placeholder="Dirección">
+                </div>
+              </div>
+              <div class="col">
+                <legend class="col-form-label col-lg-4 pt-0"><strong>Email</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-regular fa-envelope"></i></span>
+                  </div>
+                  <input formControlName="email" type="text" class="form-control" placeholder="Email">
+                </div>
+              </div>
+              <div class="col">
+                <legend class="col-form-label col-lg-6 pt-0"><strong>Teléfono</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-phone">
+                      </i>
+                    </span>
+                  </div>
+                  <input formControlName="telefonoCompania" type="text" class="form-control"
+                    placeholder="Teléfono">
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col">
+                <legend class="col-form-label col-lg-4 pt-0"><strong>Fax</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-fax">
+                      </i></span>
+                  </div>
+                  <input formControlName="faxCompania" type="text" class="form-control" placeholder="Fax">
+                </div>
+              </div>
+              <div class="col">
+                <legend class="col-form-label col-lg-8 pt-0"><strong>Teléfono móvil</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-mobile-retro">
+
+                      </i></span>
+                  </div>
+                  <input formControlName="movilCompania" type="text" class="form-control"
+                    placeholder="Teléfono móvil">
+                </div>
+              </div>
+              <div class="col">
+                <legend class="col-form-label col-lg-8 pt-0"><strong>Sitio web</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-brands fa-chrome"></i>
+                    </span>
+                  </div>
+                  <input formControlName="website" type="text" class="form-control" placeholder="Sitio web">
+                </div>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col">
+                <legend class="col-form-label col-lg-4 pt-0"><strong>NRC</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-id-card">
+                      </i>
+                    </span>
+                  </div>
+                  <input formControlName="nrc" type="text" class="form-control" placeholder="NRC">
+                </div>
+              </div>
+              <div class="col">
+                <legend class="col-form-label col-lg-4 pt-0"><strong>Rubro</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-regular fa-user">
+                      </i>
+                    </span>
+                  </div>
+                  <input formControlName="rubro" type="text" class="form-control" placeholder="Rubro">
+                </div>
+              </div>
+              <div class="col">
+                <legend class="col-form-label col-lg-8 pt-0"><strong>Tipo de empresa</strong></legend>
+                <select formControlName="tipoOrganizacion" class="form-select form-select-sm"
+                  aria-label=".form-select-sm example">
+                  <option selected="selected">Seleccione el tipo de empresa</option>
+                  <option *ngFor="let empresa of organizaciones" value="{{empresa.id}}">{{empresa.nombre}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="d-grid gap-2 d-md-block">
+              <button type="submit" class="btn btn-success">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <!-- <button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary float-end"
+            (click)="openPopup()">Nueva
+            empresa
+          </button> -->
+          <!-- <app-listado-empresas [empresas]="lista"></app-listado-empresas> -->
+          <!-- <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h4 class="modal-title">Datos de la empresa proveedora</h4>
                 </div>
                 <div class="modal-body">
-                  <form [formGroup]="form" (ngSubmit)="agregarEmpresa()" #empresaData="ngForm">
-                    <h5>Datos de la empresa proveedora</h5>
-                    <div class="row g-3">
-                      <div class="col">
-                        <legend class="col-form-label col-lg-6 pt-0"><strong>NIT</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-solid fa-id-card" [class.green-icon]="this.form.get('nit')?.valid"
-                                [class.red-icon]="this.form.get('nit')?.invalid && this.form.get('nit')?.touched">
-                              </i>
-                            </span>
-                          </div>
-                          <input formControlName="nit" type="text" class="form-control" placeholder="NIT">
-                        </div>
-
-                      </div>
-                      <div class="col">
-                        <legend class="col-form-label col-lg-6 pt-0">
-                          <strong>Nombre</strong>
-                        </legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreproveedor')?.valid"
-                                [class.red-icon]="this.form.get('nombreproveedor')?.invalid && this.form.get('nombreproveedor')?.touched">
-                              </i>
-                            </span>
-                          </div>
-                          <input formControlName="nombreproveedor" type="text" class="form-control"
-                            placeholder="Nombre de la compañia proveedora">
-                        </div>
-                      </div>
-
-                      <div class="col">
-                        <legend class="col-form-label col-lg-8 pt-0"><strong>Representante</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-regular fa-user" [class.green-icon]="this.form.get('representante')?.valid"
-                                [class.red-icon]="this.form.get('representante')?.invalid && this.form.get('representante')?.touched">
-                              </i>
-                            </span>
-                          </div>
-                          <input formControlName="representante" type="text" class="form-control"
-                            placeholder="Representante">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row g-3">
-                      <div class="col">
-                        <legend class="col-form-label col-lg-6 pt-0"><strong>Dirección</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-solid fa-location-dot"
-                                [class.green-icon]="this.form.get('direccionCompania')?.valid"
-                                [class.red-icon]="this.form.get('direccionCompania')?.invalid && this.form.get('direccionCompania')?.touched"></i>
-                            </span>
-                          </div>
-                          <input formControlName="direccionCompania" type="text" class="form-control"
-                            placeholder="Dirección">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <legend class="col-form-label col-lg-4 pt-0"><strong>Email</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-regular fa-envelope" [class.green-icon]="this.form.get('email')?.valid"
-                                [class.red-icon]="this.form.get('email')?.invalid && this.form.get('email')?.touched"></i></span>
-                          </div>
-                          <input formControlName="email" type="text" class="form-control" placeholder="Email">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <legend class="col-form-label col-lg-6 pt-0"><strong>Teléfono</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-solid fa-phone" [class.green-icon]="this.form.get('telefonoCompania')?.valid"
-                                [class.red-icon]="this.form.get('telefonoCompania')?.invalid && this.form.get('telefonoCompania')?.touched">
-                              </i>
-                            </span>
-                          </div>
-                          <input formControlName="telefonoCompania" type="text" class="form-control"
-                            placeholder="Teléfono">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row g-3">
-                      <div class="col">
-                        <legend class="col-form-label col-lg-4 pt-0"><strong>Fax</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-solid fa-fax" [class.green-icon]="this.form.get('faxCompania')?.valid"
-                                [class.red-icon]="this.form.get('faxCompania')?.invalid && this.form.get('faxCompania')?.touched">
-                              </i></span>
-                          </div>
-                          <input formControlName="faxCompania" type="text" class="form-control" placeholder="Fax">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <legend class="col-form-label col-lg-8 pt-0"><strong>Teléfono móvil</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-solid fa-mobile-retro"
-                                [class.green-icon]="this.form.get('movilCompania')?.valid"
-                                [class.red-icon]="this.form.get('movilCompania')?.invalid && this.form.get('movilCompania')?.touched">
-
-                              </i></span>
-                          </div>
-                          <input formControlName="movilCompania" type="text" class="form-control"
-                            placeholder="Teléfono móvil">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <legend class="col-form-label col-lg-8 pt-0"><strong>Sitio web</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-brands fa-chrome" [class.green-icon]="this.form.get('website')?.valid"
-                                [class.red-icon]="this.form.get('website')?.invalid && this.form.get('website')?.touched"></i>
-                            </span>
-                          </div>
-                          <input formControlName="website" type="text" class="form-control" placeholder="Sitio web">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row g-3">
-                      <div class="col">
-                        <legend class="col-form-label col-lg-4 pt-0"><strong>NRC</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-solid fa-id-card" [class.green-icon]="this.form.get('nrc')?.valid"
-                                [class.red-icon]="this.form.get('nrc')?.invalid && this.form.get('nrc')?.touched">
-                              </i>
-                            </span>
-                          </div>
-                          <input formControlName="nrc" type="text" class="form-control" placeholder="NRC">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <legend class="col-form-label col-lg-4 pt-0"><strong>Rubro</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-regular fa-user" [class.green-icon]="this.form.get('rubro')?.valid"
-                                [class.red-icon]="this.form.get('rubro')?.invalid && this.form.get('rubro')?.touched">
-                              </i>
-                            </span>
-                          </div>
-                          <input formControlName="rubro" type="text" class="form-control" placeholder="Rubro">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <legend class="col-form-label col-lg-8 pt-0"><strong>Tipo de empresa</strong></legend>
-                        <select formControlName="tipoOrganizacion" class="form-select form-select-sm"
-                          aria-label=".form-select-sm example" (change)="onChange($event)">
-                          <option selected="selected">Seleccione el tipo de empresa</option>
-                          <option *ngFor="let empresa of organizaciones" value="{{empresa.id}}">{{empresa.nombre}}
-                          </option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="d-grid gap-2 d-md-block">
-                      <button [disabled]="this.form.invalid" type="submit" class="btn btn-success">Guardar</button>
-                    </div>
-                  </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" (click)="closePopup()">
                     Cerrar
                   </button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      </div>
-    </div>
-  </div>
-</div>
+          </div> -->

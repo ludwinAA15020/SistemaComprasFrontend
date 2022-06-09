@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SucursalService } from 'src/app/services/sucursal.service';
 
 @Component({
   selector: 'app-agregar-sucursal',
@@ -10,7 +11,60 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AgregarSucursalComponent implements OnInit {
 
-  selectedMunicipio: number = 0;
+  sucursales: any[] = []
+  id:number|undefined
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder,
+    private toastr: ToastrService,
+    private router: Router,
+    private _sucursalService:SucursalService,
+    private route:ActivatedRoute) {
+    this.form = this.fb.group({
+      idperfil:[],
+      ubicacionSucursal: [''],
+      imagenSucursal: [''],
+
+    })
+  }
+
+  ngOnInit(): void {
+    let id = Number(this.route.snapshot.paramMap.get('id'));
+    this.id=id;
+    console.log("Perfil:",this.id)
+  }
+  agregarSucursal() {
+    const sucursal: any = {
+      idperfil:this.id,
+      ubicacionSucursal: this.form.get('ubicacionSucursal')?.value,
+      imagenSucursal: this.form.get('imagenSucursal')?.value,
+    }
+    this._sucursalService.saveSucursal(sucursal).subscribe(data => {
+      this.toastr.success('La sucursal fue registrado con exito', 'Sucursal registrado');
+      this.form.reset();
+    }, error => {
+      this.toastr.error('Upsss.... ocurrio un error', 'Error');
+      console.log(error);
+    })
+}
+
+/*  onChangeCity(event: any) {
+    this.selectedMunicipio = event.target.value
+  }
+   onChangeDepartament(event: any) {
+    this.selectedDepartamento = event.target.value
+  }
+
+  displayStyle = "none";
+
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
+}
+ selectedMunicipio: number = 0;
   selectedDepartamento: number = 0;
 
   municipios: any[] = [
@@ -23,58 +77,5 @@ export class AgregarSucursalComponent implements OnInit {
     { id: 2, nombre: 'San Salvador' },
     { id: 3, nombre: 'Santa Ana' }
   ];
-
-  sucursales: any[] = [
-    {
-      nombreSucursal: 'Sucursal 1',
-      direccion: 'Direccion',
-      municipioId: 1,
-      departamentoId: 2
-    }
-  ]
-  form: FormGroup;
-
-  constructor(private fb: FormBuilder,
-    private toastr: ToastrService,
-    private router: Router,) {
-    this.form = this.fb.group({
-      nombreSucursal: ['', [Validators.required, Validators.maxLength(17)]],
-      direccion: ['', [Validators.required, Validators.maxLength(25)]],
-      municipioId: ['', Validators.required],
-      departamentoId: ['', Validators.required],
-
-    })
-  }
-
-  ngOnInit(): void {
-  }
-  agregarSucursal() {
-    const sucursal: any = {
-      nombreSucursal: this.form.get('nombreSucursal')?.value,
-      direccion: this.form.get('direccion')?.value,
-      municipioId: this.form.get('municipioId')?.value,
-      departamentoId: this.form.get('departamentoId')?.value
-      //this.toastr.success('La empresa fue registrada con éxito!', 'Empresa Registrada')
-    }
-    this.sucursales.push(sucursal);
-    this.toastr.success('La sucursal fue registrada con exito!', 'Sucursal Registrada');
-    this.form.reset();
-    this.router.navigate(['/app-agregar-sucursal']);
-  }
-
-  onChangeCity(event: any) {
-    this.selectedMunicipio = event.target.value
-  }
-  onChangeDepartament(event: any) {
-    this.selectedDepartamento = event.target.value
-  }
-
-  displayStyle = "none";
-
-  openPopup() {
-    this.displayStyle = "block";
-  }
-  closePopup() {
-    this.displayStyle = "none";
-  }
+*/
 }

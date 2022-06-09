@@ -20,5 +20,8 @@ export class ReferenciaService {
     deleteReferencia(id: number): Observable<any> {
         return this.http.delete(this.myAppurl + this.myApiUrl + id);
     }
+    referenciaGetById(id: number) {
+        return this.http.get(this.myAppurl + this.myApiUrl + id);
+      }
 
 }

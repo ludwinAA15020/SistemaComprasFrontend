@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Perfil } from 'src/app/interfaces/perfil';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
+import { EmpresaService } from 'src/app/services/empresa.service';
+import { PerfilService } from 'src/app/services/perfil.service';
 
 
 @Component({
@@ -9,21 +10,37 @@ import { Router } from '@angular/router';
   styleUrls: ['./ver-perfil.component.css']
 })
 export class VerPerfilComponent implements OnInit {
-  @Input() perfiles:any
-
+  perfiles:any[]=[]
+  id:number|undefined
   constructor(
-    private router:Router
+    private router:Router,
+    private route:ActivatedRoute,
+    private _empresa:EmpresaService,
+    private _perfilService:PerfilService
   ){ }
 
   ngOnInit(): void {
-  }
-  verReferencia(index: number) {
-    this.router.navigate(['/app-listado-referencias', index]);
+    this.obtenerPerfil();
+    let id = Number(this.route.snapshot.paramMap.get('id'))
+    this.id= id
+    console.log("Empresa envia a ver perfil:",this.id)
 
   }
-  sucursales(index: number) {
-    this.router.navigate(['/app-agregar-sucursal', index]);
+  obtenerPerfil(){
+    this._perfilService.getListPerfiles().subscribe(data => {
+      console.log(data);
+      this.perfiles = data;
+      console.log(this.perfiles);
+    }, error => {
+      console.log(error);
+    })
 
+  }
+  referencias(index: number) {
+    this.router.navigate(['/app-listado-referencias',index]);
+  }
+  sucursales(index:number){
+    this.router.navigate(['/app-listado-sucursales',index]);
   }
 
 }

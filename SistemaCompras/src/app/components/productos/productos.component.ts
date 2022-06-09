@@ -110,9 +110,9 @@ guardarProducto(){
       this.router.navigate(["app-lista-producto"]);
     }, error => {
       this.toastr.error('Upsss.... ocurrio un error', 'Error');
-      console.log(error);
     })
   } else {
+    console.log(this.parametro);
     //editamos el producto;
     this._productoService.editarProducto(Number(this.parametro), this.form.value).subscribe(data => {
       this.router.navigate(["app-lista-producto"]);

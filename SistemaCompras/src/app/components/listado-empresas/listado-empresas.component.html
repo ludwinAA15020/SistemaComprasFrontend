@@ -1,25 +1,41 @@
-<table class="table table-hover mt-3">
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Representante</th>
-      <th scope="col">Rubro</th>
-      <th scope="col">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let empresa of empresas;let i=index">
-      <td>{{empresa.nombreproveedor}}</td>
-      <td>{{empresa.representante}}</td>
-      <td>{{empresa.rubro}}</td>
-      <td>
-        <i (click)="verEmpresa(i)" class="far fa-solid fa-eye" style="margin-right: 10px;"></i>
-        <i class="far fa-edit text-info" style="margin-right: 10px;"></i>
-        <!-- <i (click)="eliminarEmpresa(i)" style="margin-right: 10px;" class="fa-solid fa-trash-can text-danger"></i> -->
-      </td>
-    </tr>
-  </tbody>
-</table>
-<div *ngIf="empresas.length == 0" class="row mt-5">
-  <h5>No hay empresas para mostrar</h5>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary float-end" routerLink="/app-empresas/new">Nueva
+            empresa
+          </button>
+          <table class="table table-hover mt-3">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Representante</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let empresa of empresas;let i=index">
+                <td>{{empresa.idproveedores}}</td>
+                <td>{{empresa.nombreproveedor}}</td>
+                <td>{{empresa.representante}}</td>
+                <td>{{empresa.telefonocompania}}</td>
+                <td>
+                  <i (click)="verPerfil(empresa.idproveedores)" class=" fas fa-eye" style="margin-right: 10px;"></i>
+                  <i (click)="editarEmpresa(empresa)" class="far fa-edit text-info" style="margin-right: 10px;"></i>
+                  <i (click)="eliminarEmpresa(empresa.idproveedores)" style="margin-right: 10px;"
+                    class="fa-solid fa-trash-can text-danger"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div *ngIf="empresas.length == 0" class="row mt-5">
+            <h5>No hay empresas para mostrar</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

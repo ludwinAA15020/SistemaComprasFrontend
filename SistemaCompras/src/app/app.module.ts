@@ -26,8 +26,14 @@ import { AgregarCompaniaComponent } from './components/agregar-compania/agregar-
 import { ListaProductoComponent } from './components/lista-producto/lista-producto.component';
 import { DataTablesModule } from 'angular-datatables';
 import { FiltroPipe } from './components/pipes/filtro.pipe';
+<<<<<<< HEAD
 import { RequesicionComponent } from './components/requesicion/requesicion.component';
 import { ListaRequesicionComponent } from './components/lista-requesicion/lista-requesicion.component';
+=======
+import { EditarEmpresaComponent } from './components/editar-empresa/editar-empresa.component';
+import { ListadoSucursalesComponent } from './components/listado-sucursales/listado-sucursales.component';
+import { CrearCompaniaComponent } from './components/crear-compania/crear-compania.component';
+>>>>>>> c5eea9b48be8cab8335893c337da60cdecfa700e
 
 
 const routes: Routes = [
@@ -55,8 +61,14 @@ const routes: Routes = [
     AgregarCompaniaComponent,
     ListaProductoComponent,
     FiltroPipe,
+<<<<<<< HEAD
     RequesicionComponent,
     ListaRequesicionComponent
+=======
+    EditarEmpresaComponent,
+    ListadoSucursalesComponent,
+    CrearCompaniaComponent
+>>>>>>> c5eea9b48be8cab8335893c337da60cdecfa700e
   ],
   imports: [
     BrowserModule,
