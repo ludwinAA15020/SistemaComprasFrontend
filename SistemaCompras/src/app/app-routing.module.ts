@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CrearEmpresaComponent } from './components/crear-empresa/crear-empresa.component';
 import { ListadoEmpresasComponent } from './components/listado-empresas/listado-empresas.component';
@@ -8,6 +8,8 @@ import { CrearPerfilComponent } from './components/crear-perfil/crear-perfil.com
 import { CrearReferenciaComponent } from './components/crear-referencia/crear-referencia.component';
 import { AgregarSucursalComponent } from './components/agregar-sucursal/agregar-sucursal.component';
 import { ListaProductoComponent } from './components/lista-producto/lista-producto.component';
+import { RequesicionComponent } from './components/requesicion/requesicion.component';
+import { ListaRequesicionComponent } from './components/lista-requesicion/lista-requesicion.component';
 
 const routes: Routes = [
   { path: '', component:CrearEmpresaComponent},
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'app-agregar-sucursal/:id', component: AgregarSucursalComponent },
   { path: 'app-lista-producto', component:ListaProductoComponent },
   { path: 'app-crear-producto/:id', component:ProductosComponent},
+  {path: 'app-requesicion/:id', component:RequesicionComponent},
+  {path: 'app-lista-requesicion', component:ListaRequesicionComponent},
 
   { path: '**',redirectTo:'app-listado-empresas',pathMatch:'full' },
 ];

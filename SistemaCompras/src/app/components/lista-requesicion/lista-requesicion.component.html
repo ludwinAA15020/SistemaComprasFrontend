@@ -3,7 +3,7 @@
         <div class="col-lg-8 offset-lg-2">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="titulo">Lista de Productos</h3>
+                    <h3 class="titulo">Lista de Requisicion</h3>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button (click)="nuevo()" class="btn btn-primary">Agregar Nuevo</button>
+                    <button class="btn btn-primary">Agregar Nuevo</button>
 
                 </div>
 
@@ -28,7 +28,7 @@
                                         <i class="fa fa-search"></i>
                                     </span>
                                     <input type="text" class="form-control" placeholder="Buscar Producto" #txtSearch
-                                    (keyup)="onSearchPokemon( txtSearch.value )" />
+                                     />
                                 </div>
                             </div>
                             <div class="col lg-5">
@@ -46,40 +46,32 @@
                 <table class="table" class="table table-striped table-hover " >
 
                     <thead>
-                        <th [ngStyle]="{'width':'300px'}">Nombre </th>
-                        <th [ngStyle]="{'width':'250px'}">Marca</th>
-                        <th [ngStyle]="{'width':'200px'}">Precio</th>
-                        <th [ngStyle]="{'width':'250px'}">Categoria</th>
+                        <th [ngStyle]="{'width':'300px'}">Id Requisicion </th>
+                        <th [ngStyle]="{'width':'250px'}">Nivel de importancia</th>
+                        <th [ngStyle]="{'width':'200px'}">Fecha estimada</th>
+                        <th [ngStyle]="{'width':'250px'}">Cantidad</th>
                         
                         <th >Acciones</th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let producto of listProducto | filtroProducto:page:search">
-                            <td>{{producto.nombreprod}}</td>
-                            <td>{{producto.marcaprod }}</td>
-                            <td>{{producto.precioprod | currency}}</td>
-                            <td>{{producto.categoriaNombre}}</td>
+                        <tr *ngFor="let requisicion of listRequisicion">
+                            <td>{{requisicion.idrequisicion}}</td>
+                            <td>{{requisicion.nivelimportancia }}</td>
+                            <td>{{requisicion.fechaestimada | date:"dd-MM-yyyy"}}</td>
+                            <td>{{requisicion.cantidadproducto}}</td>
 
                             <td>
-                                <i (click)="editarProducto(producto)" class="far fa-edit text-info"></i>
+                                <i  class="far fa-edit text-info"></i>
                             </td>
                             <td>
-                                <i (click)="eliminarProducto(producto.idproducto)"
-                                    class="far fa-trash-alt text-danger"></i>
+                                <i   class="far fa-trash-alt text-danger"></i>
                             </td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-link" (click)="prevPage()">
-                        Anteriores
-                    </button>
-                    &nbsp;
-                    <button class="btn btn-link" (click)="nextPage()"
-                        [disabled]="(listProducto|filtroProducto:page:search).length===0">
-                        Siguientes
-                    </button>
+                  
                 </div>
             </div>
         </div>

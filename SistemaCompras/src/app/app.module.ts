@@ -26,6 +26,8 @@ import { AgregarCompaniaComponent } from './components/agregar-compania/agregar-
 import { ListaProductoComponent } from './components/lista-producto/lista-producto.component';
 import { DataTablesModule } from 'angular-datatables';
 import { FiltroPipe } from './components/pipes/filtro.pipe';
+import { RequesicionComponent } from './components/requesicion/requesicion.component';
+import { ListaRequesicionComponent } from './components/lista-requesicion/lista-requesicion.component';
 
 
 const routes: Routes = [
@@ -52,7 +54,9 @@ const routes: Routes = [
     AgregarSucursalComponent,
     AgregarCompaniaComponent,
     ListaProductoComponent,
-    FiltroPipe
+    FiltroPipe,
+    RequesicionComponent,
+    ListaRequesicionComponent
   ],
   imports: [
     BrowserModule,
