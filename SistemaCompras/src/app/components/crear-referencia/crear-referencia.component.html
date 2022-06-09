@@ -3,87 +3,84 @@
     <div class="col-lg offset-lg">
       <div class="card">
         <div class="card-body text-center">
-          <h1>Listado de referencias bancarias y comerciales</h1>
-          <button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary float-end"
-            (click)="openPopup()">Agregar Referencia
-          </button>
-          <app-listado-referencias [referencias]="lista"></app-listado-referencias>
-          <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+          <h1>{{msj}} Referencia</h1>
+          <form [formGroup]="form" (ngSubmit)="agregarReferencia()">
+            <div class="row g-3">
+              <div class="col">
+                <legend class="col-form-label col-lg-8 pt-0"><strong>Tipo de referencia</strong></legend>
+                <select formControlName="tipoReferencia" class="form-select form-select-sm"
+                  aria-label=".form-select-sm example">
+                  <option selected="selected">Seleccione el tipo de referencia</option>
+                  <option *ngFor="let tipo of tiposRef" value="{{tipo.nombre}}">{{tipo.nombre}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col">
+                <legend class="col-form-label col-lg-8 pt-0"><strong>Nombre de la empresa o banco</strong>
+                </legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreCompania')?.valid"
+                        [class.red-icon]="this.form.get('nombreCompania')?.invalid && this.form.get('nombreContacto')?.touched"></i>
+                    </span>
+                  </div>
+                  <input formControlName="nombreCompania" type="text" class="form-control"
+                    placeholder="Compañia o banco">
+                </div>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col">
+                <legend class="col-form-label col-lg-6 pt-0"><strong>Nombre del contacto</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreContacto')?.valid"
+                        [class.red-icon]="this.form.get('nombreContacto')?.invalid && this.form.get('nombreContacto')?.touched">
+                      </i>
+                    </span>
+                  </div>
+                  <input formControlName="nombreContacto" type="text" class="form-control"
+                    placeholder="Nombre del contacto">
+                </div>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col">
+                <legend class="col-form-label col-lg-6 pt-0"><strong>Teléfono</strong></legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-phone" [class.green-icon]="this.form.get('telefonoContacto')?.valid"
+                        [class.red-icon]="this.form.get('telefonoContacto')?.invalid && this.form.get('telefonoContacto')?.touched">
+                      </i>
+                    </span>
+                  </div>
+                  <input formControlName="telefonoContacto" type="text" class="form-control"
+                    placeholder="telefono">
+                </div>
+              </div>
+            </div>
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group" role="group" aria-label="Third group">
+                <button class="btn btn-danger" style="margin-right: 10px;">Anterior</button>
+              </div>
+              <div class="btn-group" role="group" aria-label="Third group">
+                <button [disabled]="this.form.invalid" type="submit" class="btn btn-primary"
+                  style="margin-right: 10px;">Guardar</button>
+              </div>
+            </div>
+          </form>
+          <!-- <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h1 class="modal-title">Referencia bancarias y comerciales de la empresa proveedora</h1>
                 </div>
                 <div class="modal-body">
-                  <form [formGroup]="form" (ngSubmit)="agregarReferencia()">
-                    <div class="row g-3">
-                      <div class="col">
-                        <legend class="col-form-label col-lg-8 pt-0"><strong>Tipo de referencia</strong></legend>
-                        <select formControlName="tipoReferencia" class="form-select form-select-sm"
-                          aria-label=".form-select-sm example" (change)="onChange($event)">
-                          <option selected="selected">Seleccione el tipo de referencia</option>
-                          <option *ngFor="let tipo of tiposRef" value="{{tipo.nombre}}">{{tipo.nombre}}</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="row g-3">
-                      <div class="col">
-                        <legend class="col-form-label col-lg-8 pt-0"><strong>Nombre de la empresa o banco</strong>
-                        </legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreCompania')?.valid"
-                                [class.red-icon]="this.form.get('nombreCompania')?.invalid && this.form.get('nombreContacto')?.touched"></i>
-                            </span>
-                          </div>
-                          <input formControlName="nombreCompania" type="text" class="form-control"
-                            placeholder="Compañia o banco">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row g-3">
-                      <div class="col">
-                        <legend class="col-form-label col-lg-6 pt-0"><strong>Nombre del contacto</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreContacto')?.valid"
-                                [class.red-icon]="this.form.get('nombreContacto')?.invalid && this.form.get('nombreContacto')?.touched">
-                              </i>
-                            </span>
-                          </div>
-                          <input formControlName="nombreContacto" type="text" class="form-control"
-                            placeholder="Nombre del contacto">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row g-3">
-                      <div class="col">
-                        <legend class="col-form-label col-lg-6 pt-0"><strong>Teléfono</strong></legend>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="fa-solid fa-phone" [class.green-icon]="this.form.get('telefonoContacto')?.valid"
-                                [class.red-icon]="this.form.get('telefonoContacto')?.invalid && this.form.get('telefonoContacto')?.touched">
-                              </i>
-                            </span>
-                          </div>
-                          <input formControlName="telefonoContacto" type="text" class="form-control"
-                            placeholder="telefono">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                      <div class="btn-group" role="group" aria-label="Third group">
-                        <button class="btn btn-danger" style="margin-right: 10px;">Anterior</button>
-                      </div>
-                      <div class="btn-group" role="group" aria-label="Third group">
-                        <button [disabled]="this.form.invalid" type="submit" class="btn btn-primary"
-                          style="margin-right: 10px;">Guardar</button>
-                      </div>
-                    </div>
-                  </form>
+                  
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" (click)="closePopup()">
@@ -92,7 +89,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

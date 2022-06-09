@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReferenciaService } from 'src/app/services/referencia.service';
 
 @Component({
@@ -10,19 +10,23 @@ import { ReferenciaService } from 'src/app/services/referencia.service';
 })
 
 export class ListadoReferenciasComponent implements OnInit {
-  @Input() referencias: any
+  referencias: any[]=[];
+  id:number|undefined
 
   constructor(
     private toastr: ToastrService,
     private router:Router,
-    private _referenciaService:ReferenciaService
+    private _referenciaService:ReferenciaService,
+    private route:ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.obtenerReferencias()
+    let id = Number(this.route.snapshot.paramMap.get('id'))
+    this.id = id
   }
-  verReferencia(index: number) {
-    this.router.navigate(['/app-listado-referencia', index]);
+  editarReferencia(index: number) {
+    this.router.navigate(['/app-referencias', index]);
 
   }
   obtenerReferencias() {

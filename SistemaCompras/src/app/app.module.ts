@@ -26,6 +26,9 @@ import { AgregarCompaniaComponent } from './components/agregar-compania/agregar-
 import { ListaProductoComponent } from './components/lista-producto/lista-producto.component';
 import { DataTablesModule } from 'angular-datatables';
 import { FiltroPipe } from './components/pipes/filtro.pipe';
+import { EditarEmpresaComponent } from './components/editar-empresa/editar-empresa.component';
+import { ListadoSucursalesComponent } from './components/listado-sucursales/listado-sucursales.component';
+import { CrearCompaniaComponent } from './components/crear-compania/crear-compania.component';
 
 
 const routes: Routes = [
@@ -52,7 +55,10 @@ const routes: Routes = [
     AgregarSucursalComponent,
     AgregarCompaniaComponent,
     ListaProductoComponent,
-    FiltroPipe
+    FiltroPipe,
+    EditarEmpresaComponent,
+    ListadoSucursalesComponent,
+    CrearCompaniaComponent
   ],
   imports: [
     BrowserModule,

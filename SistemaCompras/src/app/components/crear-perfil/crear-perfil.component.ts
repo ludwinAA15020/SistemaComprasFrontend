@@ -1,6 +1,6 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Perfil } from 'src/app/interfaces/perfil'
-import { Router,ActivatedRoute} from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PerfilService } from 'src/app/services/perfil.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,65 +12,50 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./crear-perfil.component.css']
 })
 export class CrearPerfilComponent implements OnInit {
-  selectedCargo = 0;
-  @Input() lista: any[] = [
-    /*{
-      /*nombreceo: 'Ingrid',
-      nombregerente: 'Karla',
-      directorareaLista: 'Elmer',
-      escritura: 'Escritura',
-      razonSocial: 'Razón social'
-    }*/
-  ];
   form: FormGroup;
-  constructor(private fb: FormBuilder, 
+  id:number|undefined
+  constructor(private fb: FormBuilder,
     private toastr: ToastrService,
-    private router:Router,
-    private _perfilService:PerfilService
-    ) {
+    private router: Router,
+    private _perfilService: PerfilService,
+    private route:ActivatedRoute
+  ) {
     this.form = this.fb.group({
-      nombreceo: ['', [Validators.required, Validators.maxLength(25)]],
-      nombregerente: ['', [Validators.required, Validators.maxLength(25)]],
-      directorareaLista: ['', [Validators.required, Validators.maxLength(25)]],
-      escritura: ['', [Validators.required, Validators.maxLength(25)]],
-      razonSocial: ['', [Validators.required, Validators.maxLength(25)]],
-      
+      idproveedores:[],
+      nombreceo: [''],
+      nombregerente: [''],
+      directorareaLista: [''],
+      escritura: [''],
+      razonsocial: ['']
     })
   }
-
   ngOnInit(): void {
-    this.obtenerPerfiles()
+    let id= Number(this.route.snapshot.paramMap.get('id'))
+    this.id=id
+    console.log('Empresa seleccionada es:',this.id)
   }
   agregarPerfil() {
     const perfil: any = {
+      idproveedores:this.id,
       nombreceo: this.form.get('nombreceo')?.value,
       directorareaLista: this.form.get('directorareaLista')?.value,
       nombregerente: this.form.get('nombregerente')?.value,
       escritura: this.form.get('escritura')?.value,
-      razonSocial: this.form.get('razonSocial')?.value,
-    } 
+      razonsocial: this.form.get('razonsocial')?.value,
+    }
+    //perfil.idproveedores=this.id
     this._perfilService.savePerfil(perfil).subscribe(data => {
-      this.toastr.success('La empresa fue registrado con exito', 'Empresa registrado');
-      this.obtenerPerfiles();
+      this.toastr.success('El perfil fue registrado con exito', 'Perfil registrado');
       this.form.reset();
-      this.router.navigate(['/app-crear-empresa']);
-    }, error => {
+    },
+     error => {
       this.toastr.error('Upsss.... ocurrio un error', 'Error');
       console.log(error);
+      console.log(perfil)
     })
-
-  } 
-  obtenerPerfiles() {
-    this._perfilService.getListPerfiles().subscribe(data => {
-      console.log(data);
-      this.lista = data;
-      console.log(this.lista);
-    }, error => {
-      console.log(error);
-    })
-
   }
-  radioChangeHandler(event: any) {
+}
+  /*radioChangeHandler(event: any) {
     this.selectedCargo = event.target.value
   }
   displayStyle = "none";
@@ -78,8 +63,8 @@ export class CrearPerfilComponent implements OnInit {
   openPopup() {
     this.displayStyle = "block";
   }
-  closePopup() {
+  public closePopup() {
     this.displayStyle = "none";
   }
+*/
 
-}

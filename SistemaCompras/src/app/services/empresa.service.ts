@@ -7,9 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class EmpresaService {
   private myAppurl = 'https://localhost:44327/';
-  private myApiUrl = 'api/Proveedor/'
+  private myApiUrl = 'api/Proveedor/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   }
 
   getListEmpresas(): Observable<any> {
     return this.http.get(this.myAppurl + this.myApiUrl);
@@ -18,13 +19,16 @@ export class EmpresaService {
   saveEmpresa(empresa: any): Observable<any> {
     return this.http.post(this.myAppurl + this.myApiUrl, empresa);
   }
-  empresaGetById(id:number){
-    return this.http.get(this.myAppurl+this.myApiUrl+id);
+  
+  deleteEmpresa(id: number): Observable<any> {
+    return this.http.delete(this.myAppurl + this.myApiUrl + id);
   }
-  getOrganizaciones(){
-    return this.http.get<any[]>(`${this.myAppurl}/api/Organizaciones`);
+
+  editarEmpresa(id: number, empresa: any): Observable<any> {
+
+    return this.http.put(this.myAppurl + this.myApiUrl + id,empresa);
   }
-  editarEmpresa(id:number, producto:any): Observable<any>{
-    return this.http.put(this.myAppurl+this.myApiUrl+id,producto);
+  empresaGetById(id: number) {
+    return this.http.get(this.myAppurl + this.myApiUrl + id);
   }
 }

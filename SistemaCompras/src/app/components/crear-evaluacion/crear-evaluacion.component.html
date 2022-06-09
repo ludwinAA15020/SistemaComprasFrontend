@@ -1,67 +1,78 @@
- <div class="row mt-4">
-    <div class="col lg-6">
-        <div class="card">
-             <div class="card-body">
-                  <h3>Evaluación de criterio de calidad</h3><br>
-                   <h5>Ingrese  la nota para cada criterio(Del 1 al 10)</h5><br>
-                <form [formGroup]="form" (ngSubmit)="agregarCriterios()">
-  <div class="form-row" >
-      <div class="form-group col-md-2">
-          <label for="nota_atencio_cliente"><strong>Atención cliente</strong></label>
-          <input type="number" class="form-control" id="nota_atención_cliente" formControlName="nota_atencion_cliente" min="1" max="10">
-        </div>
-        <div class="form-group col-md-3">
-          <label for="nota_capacidad_financiera"><strong> Capacidad finaciera  </strong></label>
-          <input type="number" class="form-control" id="nota_capacidad_financiera" formControlName="nota_capacidad_financiera" min="1" max="10">
-        </div>
-        
-        <div class="form-group col-md-2">
-          <label for="nota_fuerza_tecnica"><strong>Fuerza técnica</strong></label>
-          <input type="number" class="form-control" id="nota_fuerza_tecnica" formControlName="nota_fuerza_tecnica" min="1" max="10">
-        </div>
-        
-        <div class="form-group col-md-2">
-          <label for="nota_imagen_producto"><strong>Imagen producto</strong></label>
-          <input type="number" class="form-control" id="nota_imagen_producto" formControlName="nota_imagen_producto" min="1" max="10">
-        </div>
-  </div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <h1>Evaluación de criterio de calidad</h1><br>
+          <h2>Ingrese la nota para cada criterio(Del 1 al 10)</h2><br>
+          <form [formGroup]="form" (ngSubmit)="agregarCriterios()">
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                <label for="nota_atencio_cliente"><strong>Atención cliente</strong></label>
+                <input type="number" class="form-control" id="nota_atención_cliente"
+                  formControlName="nota_atencion_cliente" min="1" max="10">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="nota_capacidad_financiera"><strong> Capacidad finaciera </strong></label>
+                <input type="number" class="form-control" id="nota_capacidad_financiera"
+                  formControlName="nota_capacidad_financiera" min="1" max="10">
+              </div>
 
-  <div class="form-row">
-      <div class="form-group col-md-2">
-          <label for="nota_instalaciones"><strong>Instalaciones</strong></label>
-          <input type="number" class="form-control" id="nota_instalaciones" formControlName="nota_instalaciones" min="1" max="10">
-        </div>
-        <div class="form-group col-md-2">
-          <label for="nota_localizacion"><strong>Localización</strong></label>
-          <input type="number" class="form-control" id="nota_localizacion" formControlName="nota_localizacion" min="1" max="10">
-        </div>
-        
-        <div class="form-group col-md-4">
-          <label for="nota_servicio_postventa"><strong>Nivel de servicio postventa</strong></label>
-          <input type="number" class="form-control" id="nota_servicio_postventa" formControlName="nota_servicio_postventa" min="1" max="10">
-        </div>
+              <div class="form-group col-md-2">
+                <label for="nota_fuerza_tecnica"><strong>Fuerza técnica</strong></label>
+                <input type="number" class="form-control" id="nota_fuerza_tecnica" formControlName="nota_fuerza_tecnica"
+                  min="1" max="10">
+              </div>
 
-        <div class="form-group col-md-2">
-          <label for="nota_nivel_organizativo"><strong>Nivel organizativo</strong></label>
-          <input type="number" class="form-control" id="nota_nivel_organizativo" formControlName="nota_nivel_organizativo" min="1" max="10">
+              <div class="form-group col-md-2">
+                <label for="nota_imagen_producto"><strong>Imagen producto</strong></label>
+                <input type="number" class="form-control" id="nota_imagen_producto"
+                  formControlName="nota_imagen_producto" min="1" max="10">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                <label for="nota_instalaciones"><strong>Instalaciones</strong></label>
+                <input type="number" class="form-control" id="nota_instalaciones" formControlName="nota_instalaciones"
+                  min="1" max="10">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="nota_localizacion"><strong>Localización</strong></label>
+                <input type="number" class="form-control" id="nota_localizacion" formControlName="nota_localizacion"
+                  min="1" max="10">
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="nota_servicio_postventa"><strong>Nivel de servicio postventa</strong></label>
+                <input type="number" class="form-control" id="nota_servicio_postventa"
+                  formControlName="nota_servicio_postventa" min="1" max="10">
+              </div>
+
+              <div class="form-group col-md-2">
+                <label for="nota_nivel_organizativo"><strong>Nivel organizativo</strong></label>
+                <input type="number" class="form-control" id="nota_nivel_organizativo"
+                  formControlName="nota_nivel_organizativo" min="1" max="10">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="nota_periodo_garantia"><strong>Periodos de garantía</strong></label>
+                <input type="number" class="form-control" id="nota_periodo_garantia"
+                  formControlName="nota_periodo_garantia" min="1" max="10">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="nota_proveedor_mercado"><strong>Proveedor en el mercado</strong></label>
+                <input type="number" class="form-control" id="nota_proveedor_mercado"
+                  formControlName="nota_proveedor_mercado" min="1" max="10">
+              </div>
+            </div>
+            <div class="d-grid gap-2 d-md-block">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
         </div>
-  </div>
-  <div class="form-row">
-      <div class="form-group col-md-4">
-          <label for="nota_periodo_garantia"><strong>Periodos de garantía</strong></label>
-          <input type="number" class="form-control" id="nota_periodo_garantia" formControlName="nota_periodo_garantia" min="1" max="10">
-        </div>
-        <div class="form-group col-md-4">
-          <label for="nota_proveedor_mercado"><strong>Proveedor en el mercado</strong></label>
-          <input type="number" class="form-control" id="nota_proveedor_mercado" formControlName="nota_proveedor_mercado" min="1" max="10">
-        </div>
-  </div>
-  <div class="d-grid gap-2 d-md-block">
-      <button type="submit" class="btn btn-primary" >Guardar</button>
-  </div>
-</form>
-             </div>
-        </div>
+      </div>
     </div>
   </div>
- 
+</div>

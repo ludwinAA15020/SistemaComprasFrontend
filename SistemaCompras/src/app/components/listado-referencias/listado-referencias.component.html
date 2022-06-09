@@ -1,26 +1,45 @@
-<table class="table table-hover mt-3">
-    <thead>
-        <tr>
-            <th scope="col">Empresa</th>
-            <th scope="col">Nombre contacto</th>
-            <th scope="col">Teléfono</th>
-            <th scope="col">Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let referencia of referencias;let i=index">
-            <td>{{referencia.nombrecompania}}</td>
-            <td>{{referencia.nombrecontacto}}</td>
-            <td>{{referencia.telefonocontacto}}</td>
-            <td>
-                <i (click)="verReferencia(i)" class="far fa-solid fa-eye" style="margin-right: 10px;"></i>
-                <i class="far fa-edit text-info" style="margin-right: 10px;"></i>
-                <i (click)="eliminarReferencia(referencia.idreferencia)" style="margin-right: 10px;"
-                    class="fa-solid fa-trash-can text-danger"></i>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div *ngIf="referencias.length == 0" class="row mt-5">
-    <h5>No hay empresas para mostrar</h5>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1>Listado de referencias</h1>
+                    <button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary float-end"
+                        routerLink="/app-referencias/{{id}}">Nueva
+                        Referencia
+                    </button>
+                    <table class="table table-hover mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Empresa</th>
+                                <th scope="col">Nombre contacto</th>
+                                <th scope="col">Teléfono</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let referencia of referencias;let i=index">
+                                <td>{{referencia.idreferencia}}</td>
+                                <td>{{referencia.nombrecompania}}</td>
+                                <td>{{referencia.nombrecontacto}}</td>
+                                <td>{{referencia.telefonocontacto}}</td>
+                                <td>
+                                    <i (click)="editarReferencia(i)"class="far fa-edit text-info" style="margin-right: 10px;"></i>
+                                    <i (click)="eliminarReferencia(referencia.idreferencia)" style="margin-right: 10px;"
+                                        class="fa-solid fa-trash-can text-danger"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="referencias.length == 0" class="row mt-5">
+                        <h5>No hay empresas para mostrar</h5>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
