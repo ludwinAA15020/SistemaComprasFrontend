@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: 'app-listado-empresas', component: ListadoEmpresasComponent },
 
   //Rutas para crud empresas
-  { path: 'app-requiisicion', component: RequesicionComponent },
+  { path: 'app-crear-requisicion/:id', component: RequesicionComponent },
   { path: 'app-listado-requisicion', component: ListaRequesicionComponent},
 
   //Rutas para crud de productos

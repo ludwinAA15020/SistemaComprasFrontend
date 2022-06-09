@@ -16,42 +16,41 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-primary">Agregar Nuevo</button>
+                    <button (click)="nuevo()" class="btn btn-primary">Agregar Nuevo</button>
 
                 </div>
 
 
- <div class="row">
-                            <div class="col lg-7">
-                                <div class="input-group input-group-lg mb-3">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-search"></i>
-                                    </span>
-                                    <input type="text" class="form-control" placeholder="Buscar Producto" #txtSearch
-                                     />
-                                </div>
-                            </div>
-                            <div class="col lg-5">
-                                
-                            </div>
+                <div class="row">
+                    <div class="col lg-7">
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Buscar Producto" #txtSearch />
                         </div>
-                        
+                    </div>
+                    <div class="col lg-5">
+
+                    </div>
+                </div>
 
 
 
 
-                
 
 
-                <table class="table" class="table table-striped table-hover " >
+
+
+                <table class="table" class="table table-striped table-hover ">
 
                     <thead>
                         <th [ngStyle]="{'width':'300px'}">Id Requisicion </th>
                         <th [ngStyle]="{'width':'250px'}">Nivel de importancia</th>
                         <th [ngStyle]="{'width':'200px'}">Fecha estimada</th>
                         <th [ngStyle]="{'width':'250px'}">Cantidad</th>
-                        
-                        <th >Acciones</th>
+
+                        <th>Acciones</th>
                     </thead>
                     <tbody>
                         <tr *ngFor="let requisicion of listRequisicion">
@@ -61,17 +60,17 @@
                             <td>{{requisicion.cantidadproducto}}</td>
 
                             <td>
-                                <i  class="far fa-edit text-info"></i>
+                                <i class="far fa-edit text-info"></i>
                             </td>
                             <td>
-                                <i   class="far fa-trash-alt text-danger"></i>
+                                <i class="far fa-trash-alt text-danger"></i>
                             </td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  
+
                 </div>
             </div>
         </div>

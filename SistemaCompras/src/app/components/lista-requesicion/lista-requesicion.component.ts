@@ -20,6 +20,11 @@ export class ListaRequesicionComponent implements OnInit {
     // console.log(producto);
     this.router.navigate([`app-requesicion//${1}`]);
   }
+
+  nuevo() {
+    this.router.navigate([`app-crear-requisicion/new`]);
+  }
+
   obtenerRequisicion() {
     this._requisicionService.getListRequisicion().subscribe(data => {
       this.listRequisicion = data;
