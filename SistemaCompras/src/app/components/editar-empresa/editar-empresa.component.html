@@ -1,0 +1,170 @@
+<!-- <div class="container mt-5">
+    <div class="row">
+        <div class="col-lg offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <form [formGroup]="form" (ngSubmit)="actualizar()" #empresaData="ngForm">
+                        <h5>Datos de la empresa proveedora</h5>
+                        <div class="row g-3">
+                            <div class="col">
+                                <legend class="col-form-label col-lg-6 pt-0"><strong>NIT</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-id-card">
+                                            </i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="nit" type="text" class="form-control">
+                                </div>
+
+                            </div>
+                            <div class="col">
+                                <legend class="col-form-label col-lg-6 pt-0">
+                                    <strong>Nombre</strong>
+                                </legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-regular fa-user">
+                                            </i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="nombreproveedor" type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <legend class="col-form-label col-lg-8 pt-0"><strong>Representante</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-regular fa-user">
+                                            </i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="representante" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col">
+                                <legend class="col-form-label col-lg-6 pt-0"><strong>Dirección</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="direccionCompania" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <legend class="col-form-label col-lg-4 pt-0"><strong>Email</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-regular fa-envelope"></i></span>
+                                    </div>
+                                    <input formControlName="email" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <legend class="col-form-label col-lg-6 pt-0"><strong>Teléfono</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-phone">
+                                            </i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="telefonoCompania" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col">
+                                <legend class="col-form-label col-lg-4 pt-0"><strong>Fax</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-fax">
+                                            </i></span>
+                                    </div>
+                                    <input formControlName="faxCompania" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <legend class="col-form-label col-lg-8 pt-0"><strong>Teléfono móvil</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-mobile-retro">
+
+                                            </i></span>
+                                    </div>
+                                    <input formControlName="movilCompania" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <legend class="col-form-label col-lg-8 pt-0"><strong>Sitio web</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-brands fa-chrome"></i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="website" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" row g-3">
+                            <div class="col">
+                                <legend class="col-form-label col-lg-4 pt-0"><strong>NRC</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-id-card">
+                                            </i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="nrc" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <legend class="col-form-label col-lg-4 pt-0"><strong>Rubro</strong></legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-regular fa-user">
+                                            </i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="rubro" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <legend class="col-form-label col-lg-4 pt-0"><strong>Tipo de empresa</strong>
+                                </legend>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa-regular fa-user">
+                                            </i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="tipoOrganizacion" type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button type="submit" class="btn btn-success">Actualizae</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
