@@ -12,6 +12,9 @@ import { Empresa } from './../../interfaces/empresa';
 })
 export class ListadoEmpresasComponent implements OnInit {
 empresas:any[]=[]
+public page: number = 0;
+public search: string = '';
+filterEmpresa="";
 
   constructor(
     private toastr: ToastrService,
@@ -39,8 +42,8 @@ empresas:any[]=[]
   editarEmpresa(empresa:any){
     this.router.navigate([`app-empresas//${empresa.idproveedores}`]);
   }
-  verPerfil(index: number) {
-    this.router.navigate(['/app-ver-perfil',index]);
+  verPerfil(index: number,index2:number) {
+       this.router.navigate(['/app-ver-perfil',index,index2]);
   }
   eliminarEmpresa(id: number) {
     this._empresa.deleteEmpresa(id).subscribe(data => {
@@ -50,6 +53,15 @@ empresas:any[]=[]
 
     })
   }
-
-
+  nextPage() {
+    this.page += 5;
+  }
+  prevPage() {
+    if (this.page > 0)
+      this.page -= 5;
+  }
+  onSearchEmpresa(search: string) {
+    this.page = 0;
+    this.search = search;
+  }
 }

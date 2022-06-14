@@ -50,37 +50,37 @@ export class CrearEmpresaComponent implements OnInit {
       calificacion:[''],
 
     }) 
-    this.id = this.route.snapshot.params['id'];
-    if (this.id!="new"){
-      this.msj="Editar"
-      this._empresaService.empresaGetById(Number(this.id)).subscribe(data => {
-        console.log("Data para mostrar en el formulario",data);
-        this.form.setValue(data);
-      }, error => {
-        console.log(error);
-      })
-    }
   }
 
   ngOnInit(): void {
-   
+    this.id = this.route.snapshot.params['id'];
+    if (this.id!="new"){
+      this.msj="Editar";
+      this._empresaService.empresaGetById(Number(this.id)).subscribe(data=>{
+      console.log("Data para mostrar en el formulario",data);
+       this.form.patchValue(data)
+
+      },error=>{
+        console.log(error);
+      });
+    }
   }
   agregarEmpresa() {
+    const empresa: any = {
+      nit: this.form.get('nit')?.value,
+      nombreproveedor: this.form.get('nombreproveedor')?.value,
+      representante: this.form.get('representante')?.value,
+      direccionCompania: this.form.get('direccionCompania')?.value,
+      email: this.form.get('email')?.value,
+      telefonoCompania: this.form.get('telefonoCompania')?.value,
+      faxCompania: this.form.get('faxCompania')?.value,
+      movilCompania: this.form.get('movilCompania')?.value,
+      website: this.form.get('website')?.value,
+      nrc: this.form.get('nrc')?.value,
+      rubro: this.form.get('rubro')?.value,
+      tipoOrganizacion: this.form.get('tipoOrganizacion')?.value,
+    }
     if (this.id == "new") {
-      const empresa: any = {
-        nit: this.form.get('nit')?.value,
-        nombreproveedor: this.form.get('nombreproveedor')?.value,
-        representante: this.form.get('representante')?.value,
-        direccionCompania: this.form.get('direccionCompania')?.value,
-        email: this.form.get('email')?.value,
-        telefonoCompania: this.form.get('telefonoCompania')?.value,
-        faxCompania: this.form.get('faxCompania')?.value,
-        movilCompania: this.form.get('movilCompania')?.value,
-        website: this.form.get('website')?.value,
-        nrc: this.form.get('nrc')?.value,
-        rubro: this.form.get('rubro')?.value,
-        tipoOrganizacion: this.form.get('tipoOrganizacion')?.value,
-      }
       this._empresaService.saveEmpresa(empresa).subscribe(data => {
         this.toastr.success('La empresa fue registrado con exito', 'Empresa registrado');
         //this.obtenerEmpresas();
@@ -90,6 +90,17 @@ export class CrearEmpresaComponent implements OnInit {
         this.toastr.error('Upsss.... ocurrio un error', 'Error');
         console.log(error);
       })
+    }
+    else{
+      empresa.idproveedores=Number(this.id);
+      this._empresaService.editarEmpresa(Number(this.id),empresa).subscribe(data=>{
+        this.form.reset();
+        this.msj= "Agregar";
+        this.toastr.info('La empresa fue actualizada con exito', 'Empresa actualizada');
+      },error=>{
+        console.log(error);
+        console.log(empresa)
+      });
     }
   }
 

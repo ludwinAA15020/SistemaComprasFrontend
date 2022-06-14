@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { EmpresaService } from 'src/app/services/empresa.service';
 import { PerfilService } from 'src/app/services/perfil.service';
+import { Empresa } from 'src/app/interfaces/empresa';
+
 
 
 @Component({
@@ -11,22 +13,28 @@ import { PerfilService } from 'src/app/services/perfil.service';
 })
 export class VerPerfilComponent implements OnInit {
   perfiles:any[]=[]
-  id:number|undefined
+  idProveedor:number|undefined
+  idPerfil:number|undefined
+  data:any;
+  filter=10
+  
   constructor(
     private router:Router,
     private route:ActivatedRoute,
     private _empresa:EmpresaService,
-    private _perfilService:PerfilService
+    private _perfilService:PerfilService,
   ){ }
 
   ngOnInit(): void {
-    this.obtenerPerfil();
-    let id = Number(this.route.snapshot.paramMap.get('id'))
-    this.id= id
-    console.log("Empresa envia a ver perfil:",this.id)
-
+    this.idProveedor = Number(this.route.snapshot.paramMap.get('id'));
+    this.idPerfil = Number(this.route.snapshot.paramMap.get('id2'));
+    console.log(this.idPerfil)
+    if(this.idPerfil!=0){
+      this.obtenerPerfil(Number(this.idPerfil));
+    }
+    
   }
-  obtenerPerfil(){
+  obtenerPerfiles(){
     this._perfilService.getListPerfiles().subscribe(data => {
       console.log(data);
       this.perfiles = data;
@@ -34,7 +42,11 @@ export class VerPerfilComponent implements OnInit {
     }, error => {
       console.log(error);
     })
-
+  }
+  obtenerPerfil(id:number){
+    this._perfilService.perfilGetById(id).subscribe(data=>{
+      this.perfiles.push(data);
+    })
   }
   referencias(index: number) {
     this.router.navigate(['/app-listado-referencias',index]);
