@@ -28,11 +28,14 @@ import { CrearPerfilComponent } from './components/crear-perfil/crear-perfil.com
 import { ListaRequesicionComponent } from './components/lista-requesicion/lista-requesicion.component';
 import { RequesicionComponent } from './components/requesicion/requesicion.component';
 
+
+import { LoginComponent } from './components/login/login.component';
+
 import { EditarEmpresaComponent } from './components/editar-empresa/editar-empresa.component';
 
 
 const routes: Routes = [
-  { path: '', component: CrearEmpresaComponent },
+  { path: '', component: LoginComponent },
   //Rutas para crud empresas
   { path: 'app-empresas/:id', component: CrearEmpresaComponent },
   { path: 'app-listado-empresas', component: ListadoEmpresasComponent },
@@ -44,6 +47,8 @@ const routes: Routes = [
   //Rutas para crud de productos
   { path: 'app-crear-producto/:id', component: ProductosComponent },
   { path: 'app-lista-producto', component: ListaProductoComponent },
+
+  { path: 'app-login', component: LoginComponent },
 
   //Rutas para referencias
   { path: 'app-referencias/:id', component: CrearReferenciaComponent },
@@ -59,8 +64,9 @@ const routes: Routes = [
 
   //Rutas para evaluaciòn
   { path: 'app-crear-evaluacion', component: CrearEvaluacionComponent },
+
   
-  { path: '**', redirectTo:'app-listado-empresas', pathMatch: 'full' },
+  { path: '**', redirectTo:'/', pathMatch: 'full' },
 ];
 
 @NgModule({

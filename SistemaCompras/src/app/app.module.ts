@@ -31,13 +31,15 @@ import { ListadoSucursalesComponent } from './components/listado-sucursales/list
 import { CrearCompaniaComponent } from './components/crear-compania/crear-compania.component';
 import { RequesicionComponent } from './components/requesicion/requesicion.component';
 import { ListaRequesicionComponent } from './components/lista-requesicion/lista-requesicion.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 const routes: Routes = [
   { path: 'app-listado-empresas', component: ListadoEmpresasComponent },
   { path: 'app-crear-evaluacion', component: CrearEvaluacionComponent },
   { path: 'app-crear-empresa', component:CrearEmpresaComponent},
-  { path: '**',redirectTo:'app-listado-empresas',pathMatch:'full' },
+  { path: '**',redirectTo:'app-login',pathMatch:'full' },
 ]
 
 @NgModule({
@@ -62,7 +64,9 @@ const routes: Routes = [
     ListadoSucursalesComponent,
     CrearCompaniaComponent,
     ListaRequesicionComponent,
-    RequesicionComponent
+    RequesicionComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

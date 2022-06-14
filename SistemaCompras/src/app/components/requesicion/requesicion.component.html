@@ -1,1 +1,74 @@
-<p>Hola puto</p>
+<div class="container mt-5">
+    <div class="row mt-4">
+        <div class="col lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="titulo">Requisicion</h4>
+                    <form [formGroup]="form" (ngSubmit)="guardarRequisicion()">
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-brands fa-itch-io"></i>
+                            </span>
+                            <input formControlName="nombreprod" type="text" class="form-control"
+                                placeholder="Nombre del producto">
+                        </div>
+                        <div class="row">
+                            <div class="col lg-7">
+                                <div class="input-group input-group-lg mb-3">
+                                    <span class="input-group-text">
+                                        <i class="fa-regular fa-credit-card"></i>
+                                    </span>
+                                    <input formControlName="marcaprod" type="text" class="form-control"
+                                        placeholder="Marca">
+                                </div>
+                            </div>
+                            <div class="col lg-5">
+                                <div class="input-group input-group-lg mb-3">
+                                    <span class="input-group-text">
+                                        <i class="fa-regular fa-credit-card"></i>
+                                    </span>
+                                    <input formControlName="precioprod" type="number" class="form-control"
+                                        placeholder="Precio">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-regular fa-credit-card"></i>
+                            </span>
+                            <input formControlName="utilidadprod" type="text" class="form-control"
+                                placeholder="Utilidad">
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-regular fa-credit-card"></i>
+                            </span>
+                            <input formControlName="descripcionprod" type="text" class="form-control"
+                                placeholder="Descripcion">
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-regular fa-credit-card"></i>
+                            </span>
+                            <input formControlName="garantiaprod" type="text" class="form-control"
+                                placeholder="Garantia">
+                        </div>
+                       
+                        
+                          
+                       
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn-success btn-lg" (click)="cancelar()" class="btn btn-danger">
+                                <i class="fa fa-database"></i>&nbsp; Cancelar</button>
+
+                            <button type="submit" class="btn-success btn-lg">
+                                <i class="fa fa-database"></i>&nbsp; Aceptar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

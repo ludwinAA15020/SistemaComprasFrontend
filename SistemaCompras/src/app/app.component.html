@@ -1,4 +1,13 @@
-<app-navbar></app-navbar>
-<div class="container">
+
+<!-- <div class="container">
+  
    <router-outlet></router-outlet>
+   
+</div> -->
+
+<div *ngIf="!login"> 
+   <router-outlet></router-outlet>
+</div>
+<div *ngIf="login">
+   <app-login></app-login>    
 </div>

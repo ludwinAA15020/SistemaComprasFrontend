@@ -17,7 +17,9 @@ export class ListaProductoComponent implements OnInit {
   public search: string = '';
 
 
-  constructor(private _productoService: ProductoService, private router: Router,
+  constructor(
+    private _productoService: ProductoService, 
+    private router: Router,
     private toastr: ToastrService
 
   ) {
