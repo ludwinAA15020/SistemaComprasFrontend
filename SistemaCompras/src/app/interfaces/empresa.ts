@@ -1,6 +1,6 @@
 export interface Empresa {
    nit: string;
-   nombreProveedor: string;
+   nombreproveedor: string;
    representante: string;
    direccionCompania: string;
    email: string;
@@ -11,4 +11,5 @@ export interface Empresa {
    nrc: string;
    rubro: string;
    tipoOrganizacion:string
+   idperfil:number
 }

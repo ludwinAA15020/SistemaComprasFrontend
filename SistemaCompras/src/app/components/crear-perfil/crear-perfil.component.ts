@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Perfil } from 'src/app/interfaces/perfil'
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PerfilService } from 'src/app/services/perfil.service';
+import { EmpresaService } from 'src/app/services/empresa.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Empresa } from 'src/app/interfaces/empresa';
+import { ThisReceiver } from '@angular/compiler';
 
 
 @Component({
@@ -12,15 +14,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./crear-perfil.component.css']
 })
 export class CrearPerfilComponent implements OnInit {
-  form: FormGroup;
-  id:number|undefined
+  form: FormGroup
+  id:number|undefined;
+  data:any;
+  empresa:any[]=[]
+
+  
   constructor(private fb: FormBuilder,
     private toastr: ToastrService,
     private router: Router,
     private _perfilService: PerfilService,
-    private route:ActivatedRoute
+    private _empresaService:EmpresaService,
+    private route:ActivatedRoute,
   ) {
     this.form = this.fb.group({
+      idperfil:[],
       idproveedores:[],
       nombreceo: [''],
       nombregerente: [''],
@@ -30,10 +38,12 @@ export class CrearPerfilComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    let id= Number(this.route.snapshot.paramMap.get('id'))
-    this.id=id
-    console.log('Empresa seleccionada es:',this.id)
-  }
+    this.id= Number(this.route.snapshot.paramMap.get('id'));
+    this._empresaService.empresaGetById(this.id).subscribe(data=>{
+      this.empresa.push(data);
+      console.log(this.empresa);
+  });
+}
   agregarPerfil() {
     const perfil: any = {
       idproveedores:this.id,
@@ -43,9 +53,14 @@ export class CrearPerfilComponent implements OnInit {
       escritura: this.form.get('escritura')?.value,
       razonsocial: this.form.get('razonsocial')?.value,
     }
-    //perfil.idproveedores=this.id
     this._perfilService.savePerfil(perfil).subscribe(data => {
       this.toastr.success('El perfil fue registrado con exito', 'Perfil registrado');
+      console.log(perfil)
+      for (let index = 0; index < this.empresa.length; index++) {
+        const element = this.empresa[index];
+        console.log(element)
+        
+      }
       this.form.reset();
     },
      error => {
@@ -54,7 +69,16 @@ export class CrearPerfilComponent implements OnInit {
       console.log(perfil)
     })
   }
+
+  obtenerEmpresa(id:number){
+    this._empresaService.empresaGetById(id).subscribe(data=>{
+      this.data = data;
+    })
+  }
+
 }
+
+
   /*radioChangeHandler(event: any) {
     this.selectedCargo = event.target.value
   }

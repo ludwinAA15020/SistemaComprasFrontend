@@ -60,7 +60,7 @@ const routes: Routes = [
 
   //Rutas para perfil
   { path: 'app-perfil/:id', component: CrearPerfilComponent },
-  { path: 'app-ver-perfil/:id', component: VerPerfilComponent },
+  { path: 'app-ver-perfil/:id/:id2', component: VerPerfilComponent },
 
   //Rutas para evaluaciòn
   { path: 'app-crear-evaluacion', component: CrearEvaluacionComponent },

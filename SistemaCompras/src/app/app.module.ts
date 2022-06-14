@@ -31,8 +31,12 @@ import { ListadoSucursalesComponent } from './components/listado-sucursales/list
 import { CrearCompaniaComponent } from './components/crear-compania/crear-compania.component';
 import { RequesicionComponent } from './components/requesicion/requesicion.component';
 import { ListaRequesicionComponent } from './components/lista-requesicion/lista-requesicion.component';
+
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+
+import { FiltroPerfilesPipe } from './components/pipes/filtro-perfiles.pipe';
+import { FiltroEmpresasPipe } from './components/pipes/filtro-empresas.pipe';
 
 
 const routes: Routes = [
@@ -65,9 +69,13 @@ const routes: Routes = [
     CrearCompaniaComponent,
     ListaRequesicionComponent,
     RequesicionComponent,
+
     LoginComponent,
-    LogoutComponent
-  ],
+    LogoutComponent,
+
+    FiltroPerfilesPipe,
+    FiltroEmpresasPipe,
+],
   imports: [
     BrowserModule,
     AppRoutingModule,

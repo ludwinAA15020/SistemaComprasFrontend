@@ -8,58 +8,54 @@
             <div class="row g-3">
               <div class="col">
                 <legend class="col-form-label col-lg-8 pt-0"><strong>Tipo de referencia</strong></legend>
-                <select formControlName="tipoReferencia" class="form-select form-select-sm"
+                <select formControlName="tipoReferencia" class="form-control"
                   aria-label=".form-select-sm example">
                   <option selected="selected">Seleccione el tipo de referencia</option>
                   <option *ngFor="let tipo of tiposRef" value="{{tipo.nombre}}">{{tipo.nombre}}</option>
                 </select>
               </div>
-            </div>
+            </div><br>
             <div class="row g-3">
               <div class="col">
-                <legend class="col-form-label col-lg-8 pt-0"><strong>Nombre de la empresa o banco</strong>
-                </legend>
                 <div class="input-group mb-3">
-                  <div class="input-group-prepend">
+                  <div  class="input-group input-group-lg mb-3">
                     <span class="input-group-text">
                       <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreCompania')?.valid"
                         [class.red-icon]="this.form.get('nombreCompania')?.invalid && this.form.get('nombreContacto')?.touched"></i>
-                    </span>
-                  </div>
-                  <input formControlName="nombreCompania" type="text" class="form-control"
+                    </span><input formControlName="nombreCompania" type="text" class="form-control"
                     placeholder="Compañia o banco">
+                  </div>
+                  
                 </div>
               </div>
             </div>
             <div class="row g-3">
               <div class="col">
-                <legend class="col-form-label col-lg-6 pt-0"><strong>Nombre del contacto</strong></legend>
                 <div class="input-group mb-3">
-                  <div class="input-group-prepend">
+                  <div  class="input-group input-group-lg mb-3">
                     <span class="input-group-text">
                       <i class="fa-regular fa-user" [class.green-icon]="this.form.get('nombreContacto')?.valid"
                         [class.red-icon]="this.form.get('nombreContacto')?.invalid && this.form.get('nombreContacto')?.touched">
                       </i>
-                    </span>
-                  </div>
-                  <input formControlName="nombreContacto" type="text" class="form-control"
+                    </span><input formControlName="nombreContacto" type="text" class="form-control"
                     placeholder="Nombre del contacto">
+                  </div>
+                  
                 </div>
               </div>
             </div>
             <div class="row g-3">
               <div class="col">
-                <legend class="col-form-label col-lg-6 pt-0"><strong>Teléfono</strong></legend>
                 <div class="input-group mb-3">
-                  <div class="input-group-prepend">
+                  <div  class="input-group input-group-lg mb-3">
                     <span class="input-group-text">
                       <i class="fa-solid fa-phone" [class.green-icon]="this.form.get('telefonoContacto')?.valid"
                         [class.red-icon]="this.form.get('telefonoContacto')?.invalid && this.form.get('telefonoContacto')?.touched">
                       </i>
-                    </span>
-                  </div>
-                  <input formControlName="telefonoContacto" type="text" class="form-control"
+                    </span><input formControlName="telefonoContacto" type="text" class="form-control"
                     placeholder="telefono">
+                  </div>
+                  
                 </div>
               </div>
             </div>

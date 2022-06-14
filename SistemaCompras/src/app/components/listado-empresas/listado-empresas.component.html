@@ -1,29 +1,40 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-lg offset-lg-2">
+<div class="container mt-5 ">
+  <div class="row justify-content-center">
+    <div class="col-auto mt-5">
       <div class="card">
         <div class="card-body text-center">
-          <button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary float-end" routerLink="/app-empresas/new">Nueva
+          <button style="margin: 50px; padding: 10px" type="button" class="btn btn-primary float-end"
+            routerLink="/app-empresas/new">Nueva
             empresa
           </button>
-          <table class="table table-hover mt-3">
+              <div class="col lg-7">
+                <div class="input-group input-group-lg mb-3">
+                    <span class="input-group-text">
+                        <i class="fa fa-search"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Buscar Empresa" #txtSearch
+                    (keyup)="onSearchEmpresa( txtSearch.value )" />
+                </div>
+            </div>
+            
+          <table  class="table" class="table table-striped table-hover">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Representante</th>
-                <th scope="col">Telefono</th>
+                <th [ngStyle]="{'width':'300px'}">#</th>
+                <th [ngStyle]="{'width':'250px'}">Nombre</th>
+                <th [ngStyle]="{'width':'200px'}">Representante</th>
+                <th [ngStyle]="{'width':'250px'}">Telefono</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let empresa of empresas;let i=index">
+              <tr *ngFor="let empresa of empresas| filtroEmpresas:page:search">
                 <td>{{empresa.idproveedores}}</td>
                 <td>{{empresa.nombreproveedor}}</td>
                 <td>{{empresa.representante}}</td>
                 <td>{{empresa.telefonocompania}}</td>
                 <td>
-                  <i (click)="verPerfil(empresa.idproveedores)" class=" fas fa-eye" style="margin-right: 10px;"></i>
+                  <i (click)="verPerfil(empresa.idproveedores,empresa.idperfil)" class=" fas fa-eye" style="margin-right: 10px;"></i>
                   <i (click)="editarEmpresa(empresa)" class="far fa-edit text-info" style="margin-right: 10px;"></i>
                   <i (click)="eliminarEmpresa(empresa.idproveedores)" style="margin-right: 10px;"
                     class="fa-solid fa-trash-can text-danger"></i>
@@ -34,7 +45,17 @@
           <div *ngIf="empresas.length == 0" class="row mt-5">
             <h5>No hay empresas para mostrar</h5>
           </div>
-        </div>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-link" (click)="prevPage()">
+              Anterior
+            </button>
+            &nbsp;
+            <button class="btn btn-link" (click)="nextPage()">
+              Siguiente
+            </button>
+          </div>
+
       </div>
     </div>
   </div>
