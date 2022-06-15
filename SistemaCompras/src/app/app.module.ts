@@ -37,6 +37,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 
 import { FiltroPerfilesPipe } from './components/pipes/filtro-perfiles.pipe';
 import { FiltroEmpresasPipe } from './components/pipes/filtro-empresas.pipe';
+import { UsuarioComponent } from './components/usuario/usuario.component';
 
 
 const routes: Routes = [
@@ -75,6 +76,7 @@ const routes: Routes = [
 
     FiltroPerfilesPipe,
     FiltroEmpresasPipe,
+    UsuarioComponent,
 ],
   imports: [
     BrowserModule,

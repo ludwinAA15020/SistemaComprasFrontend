@@ -22,9 +22,10 @@ export class AppComponent {
     }else{
       this.login= true;
       console.log(currentUser);
-      this.router.navigate(["/app-listado-producto"]);
+      this.router.navigate(["./"]);
     }
     
   }
+
 
 }

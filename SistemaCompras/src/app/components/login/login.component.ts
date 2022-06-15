@@ -29,28 +29,28 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ingresar(){ 
+ async ingresar(){  
     if(this.form.valid){
    const email=this.form.value.email+'/';
    const password=this.form.value.password+'/';   
-  this._LoginService.loginUser(String(email), String(password)).subscribe(data => {
-    console.log("Data para mostrar en el formulario", data);
-    if(data==null){        
-        Swal.fire('Error', 'Credenciales Incorrectas', 'error');     
+  await this._LoginService.loginUser(String(email), String(password)).subscribe(data => {
+      if(data==null){        
+        Swal.fire('Error', 'Credenciales Incorrectas null', 'error');     
     }else{ 
       Swal.fire('Exito', 'Credenciales Correctas', 'info'); 
       sessionStorage.setItem("usuario",data.nombreusuario);
       sessionStorage.setItem("idusuario",data.idusuario.toString());
       sessionStorage.setItem("role",data.idrol.toString());
-      this.router.navigate([`app-lista-producto`]);
+      window.location.href = "app-lista-producto";
+     //this.router.navigate([`app-lista-producto`]);
   }
   }
 , error => {
-    console.log(error);
+  Swal.fire('Error', 'Ingrese sus Credenciales', 'error');
   })
   
 }else{
-  alert('Ingrese las credenciales');
+  Swal.fire('Error', 'No Valido', 'error');
 }
     
  }

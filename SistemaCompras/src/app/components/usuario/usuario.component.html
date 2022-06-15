@@ -1,0 +1,86 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="titulo">Registrar Usuario</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+<div class="container mt-5">
+    <div class="row mt-4">
+        <div class="col lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <!-- <h4 class="titulo">{{this.mensaje | titlecase}}</h4> -->
+                    <form [formGroup]="form" (ngSubmit)="guardarUsuario()" #fomr="ngForm">
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-brands fa-itch-io"></i>
+                            </span>
+                            <input formControlName="nombreusuario" type="text" class="form-control"
+                                placeholder="Nombre del Usuario">
+                        </div>
+                        
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-regular fa-credit-card"></i>
+                            </span>
+                            <input formControlName="correo" type="email" class="form-control"
+                                placeholder="correo">
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <span class="input-group-text">
+                                <i class="fa-regular fa-credit-card"></i>
+                            </span>
+                            <input formControlName="contra" type="password" class="form-control"
+                                placeholder="contra">
+                        </div>
+                        <div class="row">
+                            <div class="col lg-6">
+                                <div class="input-group input-group-lg mb-3">
+                                    <span class="input-group-text">
+                                        <i class="fa-regular fa-credit-card"></i>
+                                    </span>
+                                    <select formControlName="idrol">
+                                        <option value="">(Seleccione El Rol del Usuario)</option>
+                                        <option [value]="cat.idrol" *ngFor="let cat of Roles">
+                                            {{cat.nombrerol}}</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col lg-6">
+                                <div class="input-group input-group-lg mb-3">
+                                    <span class="input-group-text">
+                                        <i class="fa-regular fa-credit-card"></i>
+                                    </span>
+                                    <select formControlName="idproveedores">
+                                        <option value="">(Seleccione Si es proveedor)</option>
+                                        <option [value]="cat.idproveedores" *ngFor="let cat of Proveedor">
+                                            {{cat.nombreproveedor}}</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>         
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn-success btn-lg" (click)="cancelar()" class="btn btn-danger">
+                                <i class="fa fa-database"></i>&nbsp; Cancelar</button>
+
+                            <button type="submit" class="btn-success btn-lg" >
+                                <i class="fa fa-database" ></i>&nbsp; Aceptar</button>
+                                
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

@@ -30,6 +30,9 @@ import { RequesicionComponent } from './components/requesicion/requesicion.compo
 
 
 import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+
+import { UsuarioComponent } from './components/usuario/usuario.component';
 
 import { EditarEmpresaComponent } from './components/editar-empresa/editar-empresa.component';
 
@@ -50,6 +53,10 @@ const routes: Routes = [
 
   { path: 'app-login', component: LoginComponent },
 
+  { path: 'app-usuario', component: UsuarioComponent },
+
+  { path: 'app-logout', component: LogoutComponent },
+
   //Rutas para referencias
   { path: 'app-referencias/:id', component: CrearReferenciaComponent },
   { path: 'app-listado-referencias/:id', component: ListadoReferenciasComponent },
@@ -65,8 +72,10 @@ const routes: Routes = [
   //Rutas para evaluaciòn
   { path: 'app-crear-evaluacion', component: CrearEvaluacionComponent },
 
-  
-  { path: '**', redirectTo:'/', pathMatch: 'full' },
+  {
+    path: "**",
+    redirectTo: "app-lista-producto",
+  },
 ];
 
 @NgModule({
